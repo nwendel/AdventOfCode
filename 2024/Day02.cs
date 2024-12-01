@@ -1,6 +1,4 @@
-﻿using AdventOfCodeSupport;
-
-namespace AdventOfCode._2024;
+﻿namespace AdventOfCode._2024;
 
 public class Day02 : AdventBase
 {
