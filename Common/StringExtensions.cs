@@ -38,10 +38,6 @@ public static partial class StringExtensions
         {
             return (T)(object)input;
         }
-        else if (typeof(T) == typeof(int))
-        {
-            return (T)(object)int.Parse(input);
-        }
         else if (typeof(T) == typeof(long))
         {
             return (T)(object)long.Parse(input);
