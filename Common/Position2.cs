@@ -1,4 +1,5 @@
 ﻿namespace AdventOfCode.Common;
+
 public record Position2(long X, long Y)
 {
     public Position2 Offset(long x, long y) => new(X + x, Y + y);
