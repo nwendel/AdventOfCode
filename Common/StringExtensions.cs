@@ -60,4 +60,7 @@ public static partial class StringExtensions
 
         return self[ix..];
     }
+
+    public static bool ContainsAny(this string self, params string[] values)
+        => values.Any(x => self.Contains(x));
 }
