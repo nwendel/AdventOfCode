@@ -13,6 +13,20 @@ public class Matrix<T>
 
     public int Height => _values.GetLength(1);
 
+    public IEnumerable<T> All
+    {
+        get
+        {
+            for (var y = 0; y < Height; y++)
+            {
+                for (var x = 0; x < Width; x++)
+                {
+                    yield return _values[x, y];
+                }
+            }
+        }
+    }
+
     public T this[Position2 position]
     {
         get => _values[position.X, position.Y];

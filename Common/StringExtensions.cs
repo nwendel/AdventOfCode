@@ -11,7 +11,7 @@ public static partial class StringExtensions
         return (ParseCore<T1>(parts[0]), ParseCore<T2>(parts[1]));
     }
 
-    public static T[] ParseN<T>(string self, char separator = ' ')
+    public static T[] ParseN<T>(this string self, char separator = ' ')
     {
         var parts = self.Split(separator, StringSplitOptions.RemoveEmptyEntries);
         var result = parts

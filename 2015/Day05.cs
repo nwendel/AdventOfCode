@@ -19,7 +19,7 @@ public class Day05 : AdventBase
         return nice;
     }
 
-    private bool HasRepeat(string value)
+    private static bool HasRepeat(string value)
     {
         for (var ix = 0; ix < value.Length - 1; ix++)
         {
@@ -48,7 +48,7 @@ public class Day05 : AdventBase
         return nice;
     }
 
-    private bool HasRepeat2(string value)
+    private static bool HasRepeat2(string value)
     {
         for (var ix = 0; ix < value.Length - 2; ix++)
         {
@@ -64,7 +64,7 @@ public class Day05 : AdventBase
         return false;
     }
 
-    private bool HasRepeat3(string value)
+    private static bool HasRepeat3(string value)
     {
         for (var ix = 0; ix < value.Length - 2; ix++)
         {
