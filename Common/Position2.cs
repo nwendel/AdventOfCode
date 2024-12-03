@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode.Common;
+﻿
+
+namespace AdventOfCode.Common;
 
 public record Position2(long X, long Y)
 {
@@ -32,4 +34,11 @@ public record Position2(long X, long Y)
 
     public override string ToString()
         => $"{X} {Y}";
+
+    public Position2 Clamp(Span2 bounds)
+    {
+        var x = Math.Clamp(X, bounds.X1, bounds.X2);
+        var y = Math.Clamp(Y, bounds.Y1, bounds.Y2);
+        return new Position2(x, y);
+    }
 }

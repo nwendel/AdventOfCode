@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode.Common;
 
-public class Span2(long X1, long Y1, long X2, long Y2)
+public record Span2(long X1, long Y1, long X2, long Y2)
 {
     public IEnumerable<Position2> Positions
     {

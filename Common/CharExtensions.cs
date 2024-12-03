@@ -21,6 +21,10 @@ public static class CharExtensions
             '>' => Direction4.East,
             'v' => Direction4.South,
             '<' => Direction4.West,
+            'U' => Direction4.North,
+            'R' => Direction4.East,
+            'D' => Direction4.South,
+            'L' => Direction4.West,
             _ => throw new ArgumentOutOfRangeException(nameof(self))
         };
 }
