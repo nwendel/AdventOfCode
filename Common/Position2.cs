@@ -41,4 +41,7 @@ public record Position2(long X, long Y)
         var y = Math.Clamp(Y, bounds.Y1, bounds.Y2);
         return new Position2(x, y);
     }
+
+    public int ToIndex(Span2 bounds)
+        => (int)((Y - bounds.Y1) * (bounds.X2 - bounds.X1 + 1) + (X - bounds.X1));
 }
