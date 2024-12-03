@@ -67,14 +67,14 @@ public class Day06 : AdventBase
 
     private static ActionKind ParseAction(string line)
     {
-        if (line.StartsWith("turn off"))
-        {
-            return ActionKind.TurnOff;
-        }
-
         if (line.StartsWith("turn on"))
         {
             return ActionKind.TurnOn;
+        }
+
+        if (line.StartsWith("turn off"))
+        {
+            return ActionKind.TurnOff;
         }
 
         return ActionKind.Toggle;
