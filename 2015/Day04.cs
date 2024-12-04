@@ -20,8 +20,6 @@ public class Day04 : AdventBase
 
     protected override object InternalPart2()
     {
-        using var algorithm = MD5.Create();
-
         for (var ix = 0L; true; ix++)
         {
             if (IsValid(ix, "000000"))
@@ -34,7 +32,7 @@ public class Day04 : AdventBase
     private bool IsValid(long ix, string startsWith)
     {
         var value = $"{Input.Text()}{ix}";
-        var bytes = ASCIIEncoding.ASCII.GetBytes(value);
+        var bytes = Encoding.ASCII.GetBytes(value);
         var hash = Convert.ToHexString(_algorithm.ComputeHash(bytes));
 
         return hash.StartsWith(startsWith);
