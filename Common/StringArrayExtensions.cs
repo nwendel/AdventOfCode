@@ -15,7 +15,7 @@ public static class StringArrayExtensions
 
     public static Matrix<char> ParseMatrix(this string[] self)
     {
-        var matrix = new Matrix<char>(self.Length, self[0].Length);
+        var matrix = new Matrix<char>(self.Select(x => x.Length).Max(), self.Length);
         for (var y = 0; y < self.Length; y++)
         {
             for (var x = 0; x < self[y].Length; x++)
