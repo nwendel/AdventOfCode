@@ -63,4 +63,18 @@ public static partial class StringExtensions
 
     public static bool ContainsAny(this string self, params string[] values)
         => values.Any(x => self.Contains(x));
+
+    public static long Count(this string self, string value)
+    {
+        var count = 0L;
+        var index = 0;
+
+        while ((index = self.IndexOf(value, index, StringComparison.Ordinal)) != -1)
+        {
+            count++;
+            index += value.Length;
+        }
+
+        return count;
+    }
 }
