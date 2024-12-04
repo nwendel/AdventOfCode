@@ -29,4 +29,28 @@ public static class AocMath
         }
         return a;
     }
+
+    // permutations
+    public static IEnumerable<(T First, T Second)> Permutations<T>(T[] first, T[] second)
+    {
+        foreach (var f in first)
+        {
+            foreach (var s in second)
+            {
+                yield return (f, s);
+            }
+        }
+    }
+
+    // combinations
+    public static IEnumerable<(T First, T Second)> Combinations<T>(T[] first, T[] second)
+    {
+        for (int i = 0; i < first.Length; i++)
+        {
+            for (int j = i + 1; j < second.Length; j++)
+            {
+                yield return (first[i], second[j]);
+            }
+        }
+    }
 }

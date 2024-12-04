@@ -1,5 +1,5 @@
 ﻿var solutions = new AdventSolutions();
-var day = solutions.GetDay(2016, 6);
+var day = solutions.GetDay(2017, 2);
 
 await day.DownloadInputAsync();
 
