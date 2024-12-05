@@ -7,7 +7,7 @@ public class Day01 : AdventBase
         var numbers = Input.Lines
             .Select(x => long.Parse(x))
             .ToArray();
-        var combinations = AocMath.Combinations(numbers, 2, false);
+        var combinations = AocCombinatorics.Combinations(numbers, 2, false);
         foreach (var combination in combinations)
         {
             if (combination.Sum() == 2020)
@@ -25,7 +25,7 @@ public class Day01 : AdventBase
             .Select(x => long.Parse(x))
             .ToArray();
 
-        var combinations = AocMath.Combinations(numbers, 3, false);
+        var combinations = AocCombinatorics.Combinations(numbers, 3, false);
         foreach (var combination in combinations)
         {
             if (combination.Sum() == 2020)
