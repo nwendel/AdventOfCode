@@ -4,16 +4,15 @@ public class Day01 : AdventBase
 {
     protected override object InternalPart1()
     {
-        for (var ix = 0; ix < Input.Lines.Length - 1; ix++)
+        var numbers = Input.Lines
+            .Select(x => long.Parse(x))
+            .ToArray();
+        var combinations = AocMath.Combinations(numbers, 2, false);
+        foreach (var combination in combinations)
         {
-            for (var ix2 = ix + 1; ix2 < Input.Lines.Length; ix2++)
+            if (combination.Sum() == 2020)
             {
-                var first = long.Parse(Input.Lines[ix]);
-                var second = long.Parse(Input.Lines[ix2]);
-                if (first + second == 2020)
-                {
-                    return first * second;
-                }
+                return combination.Product();
             }
         }
 
@@ -22,20 +21,16 @@ public class Day01 : AdventBase
 
     protected override object InternalPart2()
     {
-        for (var ix = 0; ix < Input.Lines.Length - 2; ix++)
+        var numbers = Input.Lines
+            .Select(x => long.Parse(x))
+            .ToArray();
+
+        var combinations = AocMath.Combinations(numbers, 3, false);
+        foreach (var combination in combinations)
         {
-            for (var ix2 = ix + 1; ix2 < Input.Lines.Length - 1; ix2++)
+            if (combination.Sum() == 2020)
             {
-                for (var ix3 = ix2 + 1; ix3 < Input.Lines.Length; ix3++)
-                {
-                    var first = long.Parse(Input.Lines[ix]);
-                    var second = long.Parse(Input.Lines[ix2]);
-                    var third = long.Parse(Input.Lines[ix3]);
-                    if (first + second + third == 2020)
-                    {
-                        return first * second * third;
-                    }
-                }
+                return combination.Product();
             }
         }
 

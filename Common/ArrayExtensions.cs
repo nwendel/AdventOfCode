@@ -18,4 +18,17 @@ public static class ArrayExtensions
 
         return result;
     }
+
+    public static bool IsOrdered<T>(this T[] values)
+    {
+        for (int i = 0; i < values.Length - 1; i++)
+        {
+            if (Comparer<T>.Default.Compare(values[i], values[i + 1]) > 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
