@@ -41,9 +41,7 @@ public class Day06 : AdventBase
         var startPosition = map.Locate('^').Single();
         var startDirection = Direction4.North;
 
-        var blocks = new Span2(map.Width - 1, map.Height - 1).Positions
-            .Where(x => map[x] == '.')
-            .ToArray();
+        var blocks = map.Positions(x => x == '.').ToArray();
 
         var goodBlocks = 0L;
 

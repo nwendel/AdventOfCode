@@ -4,12 +4,13 @@ public class Day01 : AdventBase
 {
     protected override object InternalPart1()
     {
-        var left = Input.Lines
-            .ExtractNumber(0)
+        var numbers = Input.Lines.ExtractNumbers();
+        var left = numbers
+            .Select(x => x[0])
             .OrderBy(x => x)
             .ToArray();
-        var right = Input.Lines
-            .ExtractNumber(1)
+        var right = numbers
+            .Select(x => x[1])
             .OrderBy(x => x)
             .ToArray();
 
@@ -21,12 +22,13 @@ public class Day01 : AdventBase
 
     protected override object InternalPart2()
     {
-        var left = Input.Lines
-            .ExtractNumber(0)
+        var numbers = Input.Lines.ExtractNumbers();
+        var left = numbers
+            .Select(x => x[0])
             .OrderBy(x => x)
             .ToArray();
-        var right = Input.Lines
-            .ExtractNumber(1)
+        var right = numbers
+            .Select(x => x[1])
             .GroupBy(x => x)
             .ToDictionary(x => x.Key, x => x.Count());
 

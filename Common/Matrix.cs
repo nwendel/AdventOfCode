@@ -99,6 +99,23 @@ public class Matrix<T>
         }
     }
 
+    public IEnumerable<Position2> Positions(Predicate<T> predicate)
+    {
+        for (var y = 0; y < Height; y++)
+        {
+            for (var x = 0; x < Width; x++)
+            {
+                if (predicate(_values[x, y]))
+                {
+                    yield return new Position2(x, y);
+                }
+            }
+        }
+    }
+
+    public IEnumerable<Position2> Locate(T value)
+        => Positions(x => EqualityComparer<T>.Default.Equals(x, value));
+
     public T this[Position2 position]
     {
         get => _values[position.X, position.Y];
@@ -124,20 +141,6 @@ public class Matrix<T>
         for (var y = 0; y < Height; y++)
         {
             yield return _values[x, y];
-        }
-    }
-
-    public IEnumerable<Position2> Locate(T value)
-    {
-        for (var x = 0; x < Width; x++)
-        {
-            for (var y = 0; y < Height; y++)
-            {
-                if (EqualityComparer<T>.Default.Equals(_values[x, y], value))
-                {
-                    yield return new Position2(x, y);
-                }
-            }
         }
     }
 
