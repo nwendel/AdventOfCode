@@ -41,7 +41,7 @@ public class Day06 : AdventBase
         var startPosition = map.Locate('^').Single();
         var startDirection = Direction4.North;
 
-        var blocks = map.Locate(x => x == '.').ToArray();
+        var blocks = map.Locate('.').ToArray();
 
         var goodBlocks = 0L;
 
