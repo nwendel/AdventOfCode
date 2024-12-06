@@ -42,18 +42,13 @@ public class Day06 : AdventBase
         var startDirection = Direction4.North;
 
         var blocks = new Span2(map.Width - 1, map.Height - 1).Positions
-            .Where(x => x != startPosition)
+            .Where(x => map[x] == '.')
             .ToArray();
 
         var goodBlocks = 0L;
 
         foreach (var block in blocks)
         {
-            if (map[block] == '#')
-            {
-                continue;
-            }
-
             map[block] = '#';
 
             var visited = new HashSet<(Position2, Direction4)>();
