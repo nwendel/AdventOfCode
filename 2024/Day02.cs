@@ -25,8 +25,7 @@ public class Day02 : AdventBase
         foreach (var line in Input.Lines)
         {
             var numbers = line.ExtractNumbers();
-            if (IsSafe(numbers) ||
-                Enumerable.Range(0, numbers.Length).Any(x => IsSafe(numbers.RemoveAt(x))))
+            if (Enumerable.Range(0, numbers.Length).Any(x => IsSafe(numbers.RemoveAt(x))))
             {
                 count += 1;
             }
