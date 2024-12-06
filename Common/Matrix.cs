@@ -99,7 +99,7 @@ public class Matrix<T>
         }
     }
 
-    public IEnumerable<Position2> Positions(Predicate<T> predicate)
+    public IEnumerable<Position2> Locate(Predicate<T> predicate)
     {
         for (var y = 0; y < Height; y++)
         {
@@ -114,7 +114,7 @@ public class Matrix<T>
     }
 
     public IEnumerable<Position2> Locate(T value)
-        => Positions(x => EqualityComparer<T>.Default.Equals(x, value));
+        => Locate(x => EqualityComparer<T>.Default.Equals(x, value));
 
     public T this[Position2 position]
     {
