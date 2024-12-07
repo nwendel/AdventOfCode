@@ -22,7 +22,7 @@ public class Day07 : AdventBase
         {
             var numbers = line.ExtractNumbers();
             var testValue = numbers[0];
-            var remaining = numbers[1..] ?? throw new UnreachableException();
+            var remaining = numbers[1..];
 
             var combinations = AocCombinatorics.Permutations(operators, remaining.Length - 1);
 
