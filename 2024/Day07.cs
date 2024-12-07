@@ -24,8 +24,7 @@ public class Day07 : AdventBase
             var testValue = numbers[0];
             var remaining = numbers[1..] ?? throw new UnreachableException();
 
-            var combinations = AocCombinatorics.Permutations(operators, remaining.Length - 1)
-                .ToArray();
+            var combinations = AocCombinatorics.Permutations(operators, remaining.Length - 1);
 
             foreach (var combination in combinations)
             {
