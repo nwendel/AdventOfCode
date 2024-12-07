@@ -2,37 +2,6 @@
 
 public static class AocCombinatorics
 {
-    public static IEnumerable<T[]> Permutations<T>(params T[][] values)
-    {
-        var indices = new int[values.Length];
-        while (true)
-        {
-            var combination = new T[values.Length];
-            for (int i = 0; i < values.Length; i++)
-            {
-                combination[i] = values[i][indices[i]];
-            }
-            yield return combination;
-
-            int k = values.Length - 1;
-            while (k >= 0 && indices[k] == values[k].Length - 1)
-            {
-                k--;
-            }
-
-            if (k < 0)
-            {
-                yield break;
-            }
-
-            indices[k]++;
-            for (int j = k + 1; j < values.Length; j++)
-            {
-                indices[j] = 0;
-            }
-        }
-    }
-
     public static IEnumerable<T[]> Permutations<T>(T[] values, int count)
     {
         var indices = new int[count];
