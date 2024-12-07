@@ -3,16 +3,10 @@
 public class Day07 : AdventBase
 {
     protected override object InternalPart1()
-    {
-        char[] operators = ['+', '*'];
-        return Solve(operators);
-    }
+        => Solve(['+', '*']);
 
     protected override object InternalPart2()
-    {
-        char[] operators = ['+', '*', '|'];
-        return Solve(operators);
-    }
+        => Solve(['+', '*', '|']);
 
     private long Solve(char[] operators)
     {
