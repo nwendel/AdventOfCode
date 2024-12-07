@@ -33,6 +33,39 @@ public static class AocCombinatorics
         }
     }
 
+    public static IEnumerable<T[]> Permutations<T>(T[] values, int count)
+    {
+        var indices = new int[count];
+        while (true)
+        {
+            var combination = new T[count];
+            for (int i = 0; i < count; i++)
+            {
+                combination[i] = values[indices[i]];
+            }
+
+            yield return combination;
+
+            int k = count - 1;
+            while (k >= 0 && indices[k] == values.Length - 1)
+            {
+                k--;
+            }
+
+            if (k < 0)
+            {
+                yield break;
+            }
+
+            indices[k]++;
+
+            for (int j = k + 1; j < count; j++)
+            {
+                indices[j] = 0;
+            }
+        }
+    }
+
     public static IEnumerable<T[]> Combinations<T>(T[] values, int count, bool allowSame)
     {
         var indices = new int[count];
