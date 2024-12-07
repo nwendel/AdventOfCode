@@ -15,7 +15,7 @@ public static class AocCombinatorics
 
             yield return combination;
 
-            int k = count - 1;
+            var k = count - 1;
             while (k >= 0 && indices[k] == values.Length - 1)
             {
                 k--;
@@ -31,6 +31,40 @@ public static class AocCombinatorics
             for (int j = k + 1; j < count; j++)
             {
                 indices[j] = 0;
+            }
+        }
+    }
+
+    public static IEnumerable<T[]> Permutations<T>(params T[][] values)
+    {
+        var indices = new int[values.Length];
+        var n = values.Length;
+
+        while (true)
+        {
+            var combination = new T[n];
+            for (int i = 0; i < n; i++)
+            {
+                combination[i] = values[i][indices[i]];
+            }
+
+            yield return combination;
+
+            var k = n - 1;
+            while (k >= 0)
+            {
+                indices[k]++;
+                if (indices[k] < values[k].Length)
+                {
+                    break;
+                }
+                indices[k] = 0;
+                k--;
+            }
+
+            if (k < 0)
+            {
+                break;
             }
         }
     }
@@ -52,7 +86,7 @@ public static class AocCombinatorics
                 yield return combination;
             }
 
-            int k = count - 1;
+            var k = count - 1;
             while (k >= 0 && indices[k] == values.Length - count + k)
             {
                 k--;
@@ -74,19 +108,19 @@ public static class AocCombinatorics
 
     public static IEnumerable<T[]> Combinations<T>(params T[][] values)
     {
-        int[] indices = new int[values.Length];
-        int n = values.Length;
+        var indices = new int[values.Length];
+        var n = values.Length;
 
         while (true)
         {
-            T[] combination = new T[n];
+            var combination = new T[n];
             for (int i = 0; i < n; i++)
             {
                 combination[i] = values[i][indices[i]];
             }
             yield return combination;
 
-            int k = n - 1;
+            var k = n - 1;
             while (k >= 0)
             {
                 indices[k]++;
