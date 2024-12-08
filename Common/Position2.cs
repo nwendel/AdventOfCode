@@ -35,13 +35,13 @@ public record Position2(long X, long Y)
     public override string ToString()
         => $"{X} {Y}";
 
-    public Position2 Clamp(Span2 bounds)
+    public Position2 Clamp(Rectangle2 bounds)
     {
         var x = Math.Clamp(X, bounds.X1, bounds.X2);
         var y = Math.Clamp(Y, bounds.Y1, bounds.Y2);
         return new Position2(x, y);
     }
 
-    public int ToIndex(Span2 bounds)
+    public int ToIndex(Rectangle2 bounds)
         => (int)((Y - bounds.Y1) * (bounds.X2 - bounds.X1 + 1) + (X - bounds.X1));
 }

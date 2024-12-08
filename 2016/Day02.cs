@@ -6,7 +6,7 @@ public class Day02 : AdventBase
     {
         var code = 0L;
         var button = new Position2(1, 1);
-        var bounds = new Span2(2, 2);
+        var bounds = new Rectangle2(2, 2);
 
         foreach (var line in Input.Lines)
         {
@@ -27,7 +27,7 @@ public class Day02 : AdventBase
         var keypad = "  1   234 56789 ABC   D  ";
         var code = "";
         var button = new Position2(0, 2);
-        var bounds = new Span2(4, 4);
+        var bounds = new Rectangle2(4, 4);
 
         foreach (var line in Input.Lines)
         {

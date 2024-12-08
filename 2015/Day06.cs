@@ -9,10 +9,10 @@ public class Day06 : AdventBase
         foreach (var line in Input.Lines)
         {
             var numbers = line.ExtractNumbers();
-            var span = new Span2(numbers[0], numbers[1], numbers[2], numbers[3]);
+            var rectangle = new Rectangle2(numbers[0], numbers[1], numbers[2], numbers[3]);
             var action = ParseAction(line);
 
-            foreach (var position in span.Positions)
+            foreach (var position in rectangle.Positions)
             {
                 switch (action)
                 {
@@ -39,10 +39,10 @@ public class Day06 : AdventBase
         foreach (var line in Input.Lines)
         {
             var numbers = line.ExtractNumbers();
-            var span = new Span2(numbers[0], numbers[1], numbers[2], numbers[3]);
+            var rectangle = new Rectangle2(numbers[0], numbers[1], numbers[2], numbers[3]);
             var action = ParseAction(line);
 
-            foreach (var position in span.Positions)
+            foreach (var position in rectangle.Positions)
             {
                 switch (action)
                 {
