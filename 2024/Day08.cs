@@ -22,22 +22,23 @@ public class Day08 : AdventBase
                 continue;
             }
 
-            var combinations = AocCombinatorics.Combinations(positions, 2).ToArray();
+            var combinations = AocCombinatorics.Combinations(positions, 2);
 
             foreach (var combination in combinations)
             {
-                var (first, second) = (combination[0], combination[1]);
+                var first = combination[0];
+                var second = combination[1];
+
                 var dx = first.X - second.X;
                 var dy = first.Y - second.Y;
 
-                var check1 = new Position2(first.X + dx, first.Y + dy);
+                var check1 = first.Offset(dx, dy);
                 if (map.Contains(check1))
                 {
                     antinodes.Add(check1);
                 }
 
-
-                var check2 = new Position2(second.X - dx, second.Y - dy);
+                var check2 = second.Offset(-dx, -dy);
                 if (map.Contains(check2))
                 {
                     antinodes.Add(check2);
@@ -73,7 +74,7 @@ public class Day08 : AdventBase
                 continue;
             }
 
-            var combinations = AocCombinatorics.Combinations(positions, 2).ToArray();
+            var combinations = AocCombinatorics.Combinations(positions, 2);
 
             foreach (var combination in combinations)
             {
@@ -86,7 +87,7 @@ public class Day08 : AdventBase
                 var ix = 1;
                 while (true)
                 {
-                    var check1 = new Position2(first.X + dx * ix, first.Y + dy * ix);
+                    var check1 = first.Offset(dx, dy, ix);
                     if (map.Contains(check1))
                     {
                         antinodes.Add(check1);
@@ -103,7 +104,7 @@ public class Day08 : AdventBase
                 ix = 1;
                 while (true)
                 {
-                    var check2 = new Position2(second.X - dx * ix, second.Y - dy * ix);
+                    var check2 = second.Offset(dx, dy, -ix);
                     if (map.Contains(check2))
                     {
                         antinodes.Add(check2);

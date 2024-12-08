@@ -4,7 +4,9 @@ namespace AdventOfCode.Common;
 
 public record Position2(long X, long Y)
 {
-    public Position2 Offset(long x, long y) => new(X + x, Y + y);
+    public Position2 Offset(long dx, long dy) => new(X + dx, Y + dy);
+
+    public Position2 Offset(long dx, long dy, long multiplier) => new(X + dx * multiplier, Y + dy * multiplier);
 
     public Position2 North => new(X, Y - 1);
 
