@@ -75,7 +75,7 @@ public static class AocCombinatorics
 
         while (true)
         {
-            if (!allowSame && indices.Distinct().Count() != count)
+            if (!allowSame && indices.Distinct().Count() == count)
             {
                 var combination = new T[count];
                 for (int i = 0; i < count; i++)
