@@ -22,7 +22,7 @@ public class Day08 : AdventBase
                 continue;
             }
 
-            var combinations = AocCombinatorics.Combinations(positions, 2, false).ToArray();
+            var combinations = AocCombinatorics.Combinations(positions, 2).ToArray();
 
             foreach (var combination in combinations)
             {
@@ -73,11 +73,13 @@ public class Day08 : AdventBase
                 continue;
             }
 
-            var combinations = AocCombinatorics.Combinations(positions, 2, false).ToArray();
+            var combinations = AocCombinatorics.Combinations(positions, 2).ToArray();
 
             foreach (var combination in combinations)
             {
-                var (first, second) = (combination[0], combination[1]);
+                var first = combination[0];
+                var second = combination[1];
+
                 var dx = first.X - second.X;
                 var dy = first.Y - second.Y;
 

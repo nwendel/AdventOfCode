@@ -22,7 +22,7 @@ public class Day02 : AdventBase
         foreach (var line in Input.Lines)
         {
             var numbers = line.ExtractNumbers();
-            var combinations = AocCombinatorics.Combinations(numbers, 2, false);
+            var combinations = AocCombinatorics.Combinations(numbers, 2);
             foreach (var combination in combinations)
             {
                 var min = combination.Min();
