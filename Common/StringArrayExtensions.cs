@@ -20,7 +20,7 @@ public static class StringArrayExtensions
         {
             for (var x = 0; x < self[y].Length; x++)
             {
-                matrix[new Position2(x, y)] = self[y][x];
+                matrix[x, y] = self[y][x];
             }
         }
         return matrix;
