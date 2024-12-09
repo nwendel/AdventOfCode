@@ -44,8 +44,8 @@ public class Day09 : AdventBase
     {
         var diskMap = Input.Text();
 
-        var files = new List<(int Id, int Index, int Length)>();
-        var free = new List<(int Index, int Length)>();
+        var files = new List<(int Id, int Position, int Length)>();
+        var free = new List<(int Position, int Length)>();
 
         var blocks = new List<int?>();
 
@@ -73,19 +73,19 @@ public class Day09 : AdventBase
         files.Reverse();
         foreach (var file in files)
         {
-            var slot = free.FirstOrDefault(x => x.Length >= file.Length);
-            if (slot == default || slot.Index > file.Index)
+            var to = free.FirstOrDefault(x => x.Length >= file.Length);
+            if (to == default || to.Position > file.Position)
             {
                 continue;
             }
 
             for (var ix = 0; ix < file.Length; ix++)
             {
-                blocks[slot.Index + ix] = file.Id;
-                blocks[file.Index + ix] = null;
+                blocks[to.Position + ix] = file.Id;
+                blocks[file.Position + ix] = null;
             }
 
-            free[free.IndexOf(slot)] = slot with { Length = slot.Length - file.Length, Index = slot.Index + file.Length };
+            free[free.IndexOf(to)] = to with { Length = to.Length - file.Length, Position = to.Position + file.Length };
         }
 
         var checksum = 0L;
