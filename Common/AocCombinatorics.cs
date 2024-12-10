@@ -71,6 +71,11 @@ public static class AocCombinatorics
 
     public static IEnumerable<T[]> Combinations<T>(T[] values, int count)
     {
+        if (count > values.Length)
+        {
+            yield break;
+        }
+
         var indices = new int[count];
         for (var i = 0; i < count; i++)
         {

@@ -17,11 +17,6 @@ public class Day08 : AdventBase
                 .Locate(antennaType)
                 .ToArray();
 
-            if (positions.Length == 1)
-            {
-                continue;
-            }
-
             var combinations = AocCombinatorics.Combinations(positions, 2);
 
             foreach (var combination in combinations)
@@ -67,11 +62,6 @@ public class Day08 : AdventBase
             foreach (var position in positions)
             {
                 antinodes.Add(position);
-            }
-
-            if (positions.Length == 1)
-            {
-                continue;
             }
 
             var combinations = AocCombinatorics.Combinations(positions, 2);
