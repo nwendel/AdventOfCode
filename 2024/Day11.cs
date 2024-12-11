@@ -3,77 +3,45 @@
 public class Day11 : AdventBase
 {
     protected override object InternalPart1()
-    {
-        var stones = Input.Lines[0].ExtractNumbers();
-
-        for (var ix2 = 0; ix2 < 25; ix2++)
-        {
-            var n = new List<long>();
-            for (var ix = 0; ix < stones.Length; ix++)
-            {
-                var stone = stones[ix];
-                if (stone == 0)
-                {
-                    n.Add(1);
-                }
-                else if (stone.ToString().Length % 2 == 0)
-                {
-                    string stoneStr = stone.ToString();
-                    int mid = stoneStr.Length / 2;
-                    int left = int.Parse(stoneStr.Substring(0, mid));
-                    int right = int.Parse(stoneStr.Substring(mid));
-                    n.Add(left);
-                    n.Add(right);
-                }
-                else
-                {
-                    n.Add(stone * 2024);
-                }
-            }
-            stones = n.ToArray();
-        }
-
-        return stones.Count();
-    }
+        => Solve(25);
 
     protected override object InternalPart2()
+        => Solve(75);
+
+    private long Solve(int iterations)
     {
-        var s = Input.Lines[0].ExtractNumbers();
+        var stones = Input.Text().ExtractNumbers();
 
-        var stones = new Dictionary<long, long>();
-        foreach (var stone in s)
+        var stoneCounts = new Counter<long, long>(stones);
+
+        for (var blink = 0; blink < iterations; blink++)
         {
-            stones.AddOrUpdate(stone, 1);
-        }
+            var n = new Counter<long, long>();
 
-
-        for (var ix2 = 0; ix2 < 75; ix2++)
-        {
-            var n = new Dictionary<long, long>();
-            foreach (var stone in stones)
+            foreach (var stoneCount in stoneCounts)
             {
-                if (stone.Key == 0)
+                if (stoneCount.Key == 0)
                 {
-                    n.AddOrUpdate(1, stone.Value);
+                    n[1] += stoneCount.Value;
                 }
-                else if (stone.Key.ToString().Length % 2 == 0)
+                else if (stoneCount.Key.ToString().Length % 2 == 0)
                 {
-                    string stoneStr = stone.Key.ToString();
-                    int mid = stoneStr.Length / 2;
-                    int left = int.Parse(stoneStr.Substring(0, mid));
-                    int right = int.Parse(stoneStr.Substring(mid));
-
-                    n.AddOrUpdate(left, stone.Value);
-                    n.AddOrUpdate(right, stone.Value);
+                    var text = stoneCount.Key.ToString();
+                    var ix = text.Length / 2;
+                    var left = long.Parse(text[..ix]);
+                    var right = long.Parse(text[ix..]);
+                    n[left] += stoneCount.Value;
+                    n[right] += stoneCount.Value;
                 }
                 else
                 {
-                    n.AddOrUpdate(stone.Key * 2024, stone.Value);
+                    n[stoneCount.Key * 2024] += stoneCount.Value;
                 }
             }
-            stones = n;
+
+            stoneCounts = n;
         }
 
-        return stones.Sum(x => x.Value);
+        return stoneCounts.Sum(x => x.Value);
     }
 }
