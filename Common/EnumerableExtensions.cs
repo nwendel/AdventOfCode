@@ -29,6 +29,25 @@ public static class EnumerableExtensions
         }
     }
 
+    public static IEnumerable<(int, T[])> SlidingWindowIx<T>(this IEnumerable<T> self, int size)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(size);
+
+        var ix = 1;
+        var window = new Queue<T>(size);
+        foreach (var item in self)
+        {
+            window.Enqueue(item);
+            if (window.Count == size)
+            {
+                yield return (ix - size, window.ToArray());
+                window.Dequeue();
+            }
+
+            ix += 1;
+        }
+    }
+
     public static IEnumerable<T> Cycle<T>(this IEnumerable<T> self)
     {
         while (true)

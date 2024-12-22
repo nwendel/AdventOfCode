@@ -49,7 +49,7 @@ public class Day18 : AdventBase
 
         while (true)
         {
-            var reaachedExit = false;
+            var reachedExit = false;
 
             var map = new Matrix<char>(71, 71);
             var bytes = Input.Lines.ExtractNumbers()
@@ -72,7 +72,7 @@ public class Day18 : AdventBase
                 var (current, steps) = queue.Dequeue();
                 if (current.Equals(end))
                 {
-                    reaachedExit = true;
+                    reachedExit = true;
                     break;
                 }
 
@@ -87,7 +87,7 @@ public class Day18 : AdventBase
                 }
             }
 
-            if (!reaachedExit)
+            if (!reachedExit)
             {
                 foreach (var p in map.Locate(x => true))
                 {

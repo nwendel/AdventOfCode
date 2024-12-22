@@ -46,4 +46,7 @@ public record Position2(long X, long Y)
 
     public int ToIndex(Rectangle2 bounds)
         => (int)((Y - bounds.Y1) * (bounds.X2 - bounds.X1 + 1) + (X - bounds.X1));
+
+    public long ManhattanDistanceTo(Position2 position2)
+        => Math.Abs(X - position2.X) + Math.Abs(Y - position2.Y);
 }

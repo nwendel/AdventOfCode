@@ -2,18 +2,21 @@
 
 public static class AocCombinatorics
 {
-    public static IEnumerable<T[]> Permutations<T>(T[] values, int count)
+    public static IEnumerable<T[]> Permutations<T>(T[] values, int count, bool allowSame = true)
     {
         var indices = new int[count];
         while (true)
         {
-            var combination = new T[count];
-            for (int i = 0; i < count; i++)
+            if (allowSame || indices.Distinct().Count() == indices.Length)
             {
-                combination[i] = values[indices[i]];
-            }
+                var combination = new T[count];
+                for (int i = 0; i < count; i++)
+                {
+                    combination[i] = values[indices[i]];
+                }
 
-            yield return combination;
+                yield return combination;
+            }
 
             var k = count - 1;
             while (k >= 0 && indices[k] == values.Length - 1)
