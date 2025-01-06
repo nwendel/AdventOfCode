@@ -4,19 +4,19 @@ public class Day22 : AdventBase
 {
     protected override object InternalPart1()
     {
-        var secrets = Input.Lines.Select(x => int.Parse(x)).ToArray();
+        var secrets = Input.Lines.ExtractNumber(0);
         var sum = 0L;
 
         foreach (var secret in secrets)
         {
-            var secret2000 = GenerateSecretNumber(secret, 2000);
+            var secret2000 = GetSecretNumber(secret, 2000);
             sum += secret2000;
         }
 
         return sum;
     }
 
-    private static long GenerateSecretNumber(long secret, int count)
+    private static long GetSecretNumber(long secret, int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -37,7 +37,7 @@ public class Day22 : AdventBase
 
     protected override object InternalPart2()
     {
-        var initialSecrets = Input.Lines.Select(x => long.Parse(x)).ToArray();
+        var initialSecrets = Input.Lines.ExtractNumber(0);
         var bestSequence = FindBestSequence(initialSecrets, 2000);
         return bestSequence;
     }
