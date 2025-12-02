@@ -1,12 +1,12 @@
-﻿namespace AdventOfCode.Common;
+namespace AdventOfCode.Common;
 
 public static class CharExtensions
 {
-    public static Turn ToTurn(this char self)
+    public static Turn2 ToTurn2(this char self)
         => self switch
         {
-            'L' => Turn.Left,
-            'R' => Turn.Right,
+            'L' => Turn2.Left,
+            'R' => Turn2.Right,
             _ => throw new ArgumentOutOfRangeException(nameof(self))
         };
 

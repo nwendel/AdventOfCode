@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode._2016;
+namespace AdventOfCode._2016;
 
 public class Day01 : AdventBase
 {
@@ -11,7 +11,7 @@ public class Day01 : AdventBase
 
         foreach (var instruction in instructions)
         {
-            var turn = instruction[0].ToTurn();
+            var turn = instruction[0].ToTurn2();
             var distance = int.Parse(instruction[1..]);
             direction = direction.Turn(turn);
             position = position.Move(direction, distance);
@@ -31,7 +31,7 @@ public class Day01 : AdventBase
 
         foreach (var instruction in instructions)
         {
-            var turn = instruction[0].ToTurn();
+            var turn = instruction[0].ToTurn2();
             direction = direction.Turn(turn);
             var distance = int.Parse(instruction[1..]);
 

@@ -1,13 +1,20 @@
-﻿namespace AdventOfCode.Common;
+namespace AdventOfCode.Common;
 
 public static class Direction4Extensions
 {
-    public static Direction4 Turn(this Direction4 self, Turn turn)
+    public static Direction4 Turn(this Direction4 self, Turn2 turn)
         => turn switch
         {
-            Common.Turn.Left => self.TurnLeft(),
-            Common.Turn.Right => self.TurnRight(),
-            Common.Turn.Around => self.TurnAround(),
+            Turn2.Left => self.TurnLeft(),
+            Turn2.Right => self.TurnRight(),
+        };
+
+    public static Direction4 Turn(this Direction4 self, Turn3 turn)
+        => turn switch
+        {
+            Turn3.Left => self.TurnLeft(),
+            Turn3.Right => self.TurnRight(),
+            Turn3.Around => self.TurnAround(),
         };
 
     public static Direction4 TurnLeft(this Direction4 self)

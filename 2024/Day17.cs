@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode._2024;
+namespace AdventOfCode._2024;
 
 public class Day17 : AdventBase
 {
@@ -82,10 +82,10 @@ public class Day17 : AdventBase
 
         List<long> Dfs(long curVal, int depth)
         {
-            List<long> res = new();
+            List<long> res = [];
             if (depth > program.Length) return res;
             var tmp = curVal << 3;
-            for (int i = 0; i < 8; i++)
+            for (var i = 0; i < 8; i++)
             {
                 var tmpRes = RunProgram(tmp + i);
                 if (tmpRes.SequenceEqual(program.TakeLast(depth + 1)))
@@ -103,10 +103,10 @@ public class Day17 : AdventBase
             long regB = 0;
             long regC = 0;
             List<long> output = new();
-            int pc = 0;
+            var pc = 0;
             while (pc < program.Length)
             {
-                long combo = (program[pc + 1]) switch
+                var combo = (program[pc + 1]) switch
                 {
                     0 => 0,
                     1 => 1,
@@ -118,9 +118,9 @@ public class Day17 : AdventBase
                     _ => long.MinValue
                 };
 
-                long literal = program[pc + 1];
+                var literal = program[pc + 1];
                 long res = 0;
-                bool jumped = false;
+                var jumped = false;
                 switch (program[pc])
                 {
                     case 0:
