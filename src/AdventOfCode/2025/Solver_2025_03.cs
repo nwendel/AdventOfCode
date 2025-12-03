@@ -29,7 +29,7 @@ public class Solver_2025_03 : Solver<string[]>
         return result;
     }
 
-    private long SolveCore(string[] input, int length)
+    private static long SolveCore(string[] input, int length)
     {
         var result = 0L;
 
@@ -38,14 +38,13 @@ public class Solver_2025_03 : Solver<string[]>
             var remaining = line;
             var number = 0L;
 
-            for (var ix = length - 1; ix >= 0; ix--)
+            for (var keep = length - 1; keep >= 0; keep--)
             {
-                var max = remaining[..^ix].Max();
-                var index = remaining.IndexOf(max);
+                var max = remaining[..^keep].Max();
+                var ix = remaining.IndexOf(max);
+                remaining = remaining[(ix + 1)..];
 
                 number = number * 10 + max - '0';
-
-                remaining = remaining[(index + 1)..];
             }
 
             result += number;
