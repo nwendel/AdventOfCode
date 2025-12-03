@@ -1,36 +1,33 @@
-using System.Numerics;
-
 namespace AdventOfCode.Common;
 
 public static class EnumerableExtensions
 {
-    public static T Product<T>(this IEnumerable<T> self)
-        where T : INumber<T>
-        => self.Aggregate(T.One, (a, b) => a * b);
-
-    public static IEnumerable<T> Repeat<T>(this IEnumerable<T> self)
+    extension<T>(IEnumerable<T> self)
     {
-        while (true)
+        public IEnumerable<T> Repeat()
         {
-            foreach (var item in self)
+            while (true)
             {
-                yield return item;
+                foreach (var item in self)
+                {
+                    yield return item;
+                }
             }
         }
-    }
 
-    public static IEnumerable<T[]> SlidingWindow<T>(this IEnumerable<T> self, int size)
-    {
-        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(size);
-
-        var window = new Queue<T>(size);
-        foreach (var item in self)
+        public IEnumerable<T[]> SlidingWindow(int size)
         {
-            window.Enqueue(item);
-            if (window.Count == size)
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(size);
+
+            var window = new Queue<T>(size);
+            foreach (var item in self)
             {
-                yield return window.ToArray();
-                window.Dequeue();
+                window.Enqueue(item);
+                if (window.Count == size)
+                {
+                    yield return window.ToArray();
+                    window.Dequeue();
+                }
             }
         }
     }
