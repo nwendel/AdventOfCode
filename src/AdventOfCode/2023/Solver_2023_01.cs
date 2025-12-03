@@ -2,8 +2,6 @@ namespace AdventOfCode2._2023;
 
 public class Solver_2023_01 : Solver
 {
-    public override Day Day => new(2023, 1);
-
     protected override object SolvePart1Core(Input input)
     {
         var result = input.Lines
@@ -29,6 +27,8 @@ public class Solver_2023_01 : Solver
             .Replace("eight", "eight8eight")
             .Replace("nine", "nine9nine");
 
-        return SolvePart1Core(modifiedInput);
+        var result = SolvePart1Core(modifiedInput);
+
+        return result;
     }
 }

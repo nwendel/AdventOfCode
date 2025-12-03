@@ -2,11 +2,9 @@ namespace AdventOfCode2._2024;
 
 public class Solver_2024_01 : Solver<ParsedInput>
 {
-    public override Day Day => new(2024, 1);
-
     protected override ParsedInput ParseInput(Input input)
     {
-        var lineNumbers = input.Lines.ToLongs(" ", "  ");
+        var lineNumbers = input.Lines.ToLongs(" ");
 
         var left = lineNumbers
             .Select(x => x[0])

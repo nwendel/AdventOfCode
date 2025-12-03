@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode.Common.Parsing;
 

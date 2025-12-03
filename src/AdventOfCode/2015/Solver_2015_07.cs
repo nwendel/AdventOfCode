@@ -4,10 +4,9 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AdventOfCode._2015;
 
+// TODO: Can this be simplified?
 public class Solver_2015_07 : Solver<Instruction[]>
 {
-    public override Day Day => new(2015, 7);
-
     protected override Instruction[] ParseInput(Input input)
     {
         var parsedInput = input.Lines
@@ -29,9 +28,10 @@ public class Solver_2015_07 : Solver<Instruction[]>
                         "OR" => OperationKind.Or,
                         "LSHIFT" => OperationKind.LShift,
                         "RSHIFT" => OperationKind.RShift,
-                        _ => throw new InvalidOperationException("Unknown operation"),
+                        _ => throw new InvalidOperationException($"Unknown operation {tokens[1]}"),
                     },
-                    _ => throw new InvalidOperationException("Invalid instruction format"),
+
+                    _ => throw new InvalidOperationException($"Invalid instruction format {expr}"),
                 };
                 var operand2 = tokens.Length == 3 ? tokens[2] : null;
 

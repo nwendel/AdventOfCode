@@ -3,10 +3,6 @@ namespace AdventOfCode._2016;
 
 public class Solver_2016_01 : Solver<Instruction[]>
 {
-    public static readonly Position2 _start = new(0, 0);
-
-    public override Day Day => new(2016, 1);
-
     protected override Instruction[] ParseInput(Input input)
     {
         var parsedInput = input
@@ -21,7 +17,7 @@ public class Solver_2016_01 : Solver<Instruction[]>
 
     protected override object SolvePart1Core(Instruction[] input)
     {
-        var position = _start;
+        var position = Position2.Zero;
         var direction = Direction4.North;
 
         foreach (var instruction in input)
@@ -30,14 +26,14 @@ public class Solver_2016_01 : Solver<Instruction[]>
             position = position.Move(direction, instruction.Distance);
         }
 
-        var result = _start.ManhattanDistanceTo(position);
+        var result = position.ManhattanDistanceTo(Position2.Zero);
 
         return result;
     }
 
     protected override object SolvePart2Core(Instruction[] input)
     {
-        var position = _start;
+        var position = Position2.Zero;
         var direction = Direction4.North;
 
         var visited = new HashSet<Position2> { position };
@@ -52,7 +48,7 @@ public class Solver_2016_01 : Solver<Instruction[]>
 
                 if (!visited.Add(position))
                 {
-                    var result = _start.ManhattanDistanceTo(position);
+                    var result = position.ManhattanDistanceTo(Position2.Zero);
 
                     return result;
                 }

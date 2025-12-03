@@ -2,8 +2,6 @@ namespace AdventOfCode2._2025;
 
 public class Solver_2025_01 : Solver
 {
-    public override Day Day => new(2025, 1);
-
     protected override object SolvePart1Core(Input input)
     {
         var result = 0L;

@@ -3,8 +3,6 @@ namespace AdventOfCode._2025;
 
 public class Solver_2025_02 : Solver<long[][]>
 {
-    public override Day Day => new(2025, 2);
-
     protected override long[][] ParseInput(Input input)
     {
         var parsedInput = input

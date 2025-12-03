@@ -17,7 +17,10 @@ public static class Extensions
                 .Select(x => x.ToLong())
                 .ToArray();
 
-        public long[][] ToLongs(params string[] separators)
+        public long[][] ToLongs(string separator)
+            => self.ToLongs([separator]);
+
+        public long[][] ToLongs(string[] separators)
             => self
                 .Select(x => x.ToLongs(separators))
                 .ToArray();

@@ -2,8 +2,6 @@ namespace AdventOfCode.Common.Framework;
 
 public abstract class Solver : ISolver
 {
-    public abstract Day Day { get; }
-
     public object SolvePart1(Input input)
         => SolvePart1Core(input);
 
@@ -17,8 +15,6 @@ public abstract class Solver : ISolver
 
 public abstract class Solver<T> : ISolver
 {
-    public abstract Day Day { get; }
-
     public object SolvePart1(Input input)
     {
         var transformed = ParseInput(input);

@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using AngleSharp;
 using FluentRegistration;
 using Microsoft.Extensions.DependencyInjection;

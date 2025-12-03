@@ -3,8 +3,6 @@ namespace AdventOfCode._2015;
 
 public class Solver_2015_03 : Solver<Direction4[]>
 {
-    public override Day Day => new(2015, 3);
-
     protected override Direction4[] ParseInput(Input input)
     {
         var parsedInput = input

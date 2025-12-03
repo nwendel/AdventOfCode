@@ -3,8 +3,6 @@ namespace AdventOfCode._2015;
 
 public class Solver_2015_01 : Solver
 {
-    public override Day Day => new(2015, 1);
-
     protected override object SolvePart1Core(Input input)
     {
         var text = input.Text;
@@ -21,14 +19,12 @@ public class Solver_2015_01 : Solver
 
         for (var i = 0; i < text.Length; i++)
         {
-            if (text[i] == '(')
+            floor += text[i] switch
             {
-                floor++;
-            }
-            else if (text[i] == ')')
-            {
-                floor--;
-            }
+                '(' => 1,
+                ')' => -1,
+                _ => throw new InvalidOperationException($"Invalid character {text[i]}"),
+            };
 
             if (floor == -1)
             {

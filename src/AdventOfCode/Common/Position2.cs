@@ -3,6 +3,8 @@ namespace AdventOfCode.Common;
 
 public record Position2(long X, long Y)
 {
+    public static readonly Position2 Zero = new(0, 0);
+
     public Position2 Offset(long dx, long dy)
         => new(X + dx, Y + dy);
 
