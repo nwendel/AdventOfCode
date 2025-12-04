@@ -63,11 +63,6 @@ public partial class Input : IEnumerable<InputChar>
             .Select(x => x.ToLong())
             .ToArray();
 
-    public IEnumerable<Input> GetLines()
-    {
-        return Lines;
-    }
-
     public Matrix2<T> ToMatrix<T>(Func<char, T> parse)
     {
         var lines = Lines;

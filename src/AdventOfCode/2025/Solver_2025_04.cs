@@ -17,12 +17,7 @@ public class Solver_2025_04 : Solver<Matrix2<bool>>
 
         foreach (var position in input.Positions)
         {
-            if (!input[position])
-            {
-                continue;
-            }
-
-            if (AdjacentPaperRolls(input, position).Count() < 4)
+            if (CanAccess(input, position))
             {
                 result += 1;
             }
@@ -41,15 +36,9 @@ public class Solver_2025_04 : Solver<Matrix2<bool>>
 
             foreach (var position in input.Positions)
             {
-                if (!input[position])
+                if (CanAccess(input, position))
                 {
-                    continue;
-                }
-
-                var adjacentPaperRolls = AdjacentPaperRolls(input, position);
-                if (adjacentPaperRolls.Count() < 4)
-                {
-                    toRemove.AddRange(position);
+                    toRemove.Add(position);
                 }
             }
 
@@ -65,15 +54,23 @@ public class Solver_2025_04 : Solver<Matrix2<bool>>
         return result;
     }
 
-    private static IEnumerable<Position2> AdjacentPaperRolls(Matrix2<bool> input, Position2 position)
+    private static bool CanAccess(Matrix2<bool> input, Position2 position)
     {
+        if (!input[position])
+        {
+            return false;
+        }
+
+        var adjacent = 0;
         foreach (var check in position.Adjacent8)
         {
             if (input.Contains(check) && input[check])
             {
-                yield return check;
+                adjacent++;
             }
         }
+
+        return adjacent < 4;
     }
 }
 

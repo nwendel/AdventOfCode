@@ -23,13 +23,10 @@ public class Solver_2025_02 : Solver<long[][]>
             {
                 var id = $"{ix}";
 
-                if (id.Length % 2 == 0)
+                var m = id.Length / 2;
+                if (id[..m] == id[m..])
                 {
-                    var m = id.Length / 2;
-                    if (id[..m] == id[m..])
-                    {
-                        result += ix;
-                    }
+                    result += ix;
                 }
             }
         }
