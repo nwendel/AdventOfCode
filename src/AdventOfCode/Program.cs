@@ -1,6 +1,6 @@
 var solutions = new Solutions();
 
-var day = new Day(2025, 4);
+var day = new Day(2025, 1);
 //await solutions.Solve(day);
 
 await solutions.Verify(day);

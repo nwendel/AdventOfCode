@@ -1,17 +1,17 @@
-
 namespace AdventOfCode._2025;
 
-// TODO: Move the check if current positions has a paper roll to somewhere common?
-public class Solver_2025_04 : Solver<Matrix2<bool>>
+public class Solver_2025_04 : Solver<Matrix2<Element>>
 {
-    protected override Matrix2<bool> ParseInput(Input input)
+    protected override Matrix2<Element> ParseInput(Input input)
     {
-        var parsedInput = input.ToMatrix(x => x == '@');
+        var parsedInput = input.ToMatrix(x => x == '@'
+            ? Element.PaperRoll
+            : Element.Empty);
 
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(Matrix2<bool> input)
+    protected override object SolvePart1Core(Matrix2<Element> input)
     {
         var result = 0L;
 
@@ -26,7 +26,7 @@ public class Solver_2025_04 : Solver<Matrix2<bool>>
         return result;
     }
 
-    protected override object SolvePart2Core(Matrix2<bool> input)
+    protected override object SolvePart2Core(Matrix2<Element> input)
     {
         var result = 0L;
 
@@ -47,30 +47,31 @@ public class Solver_2025_04 : Solver<Matrix2<bool>>
                 break;
             }
 
-            input.Modify(toRemove, false);
+            input.Modify(toRemove, Element.Empty);
             result += toRemove.Count;
         }
 
         return result;
     }
 
-    private static bool CanAccess(Matrix2<bool> input, Position2 position)
+    private static bool CanAccess(Matrix2<Element> input, Position2 position)
     {
-        if (!input[position])
+        if (input[position] == Element.Empty)
         {
             return false;
         }
 
-        var adjacent = 0;
-        foreach (var check in position.Adjacent8)
-        {
-            if (input.Contains(check) && input[check])
-            {
-                adjacent++;
-            }
-        }
+        var adjacent = position.Adjacent8
+            .Count(x => input.Contains(x) &&
+                        input[x] == Element.PaperRoll);
 
         return adjacent < 4;
     }
+}
+
+public enum Element
+{
+    Empty,
+    PaperRoll,
 }
 
