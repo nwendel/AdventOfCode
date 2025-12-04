@@ -25,7 +25,7 @@ public class Matrix2<T>
         set => _values[x, y] = value;
     }
 
-    public IEnumerable<T> All
+    public IEnumerable<Position2> Positions
     {
         get
         {
@@ -33,9 +33,23 @@ public class Matrix2<T>
             {
                 for (var x = 0; x < Width; x++)
                 {
-                    yield return _values[x, y];
+                    yield return new Position2(x, y);
                 }
             }
+        }
+    }
+
+    public IEnumerable<T> All
+        => Positions.Select(p => this[p]);
+
+    public bool Contains(Position2 position)
+        => position.X >= 0 && position.X < Width && position.Y >= 0 && position.Y < Height;
+
+    public void Modify(IEnumerable<Position2> positions, T value)
+    {
+        foreach (var position in positions)
+        {
+            _values[position.X, position.Y] = value;
         }
     }
 

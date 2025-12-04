@@ -43,4 +43,40 @@ public static class Combinatorics
             }
         }
     }
+
+    public static IEnumerable<T[]> Permutations<T>(T[] values)
+    {
+        var indices = new int[values.Length];
+        while (true)
+        {
+            if (indices.Distinct().Count() == indices.Length)
+            {
+                var combination = new T[values.Length];
+                for (var i = 0; i < values.Length; i++)
+                {
+                    combination[i] = values[indices[i]];
+                }
+
+                yield return combination;
+            }
+
+            var ix1 = values.Length - 1;
+            while (ix1 >= 0 && indices[ix1] == values.Length - 1)
+            {
+                ix1--;
+            }
+
+            if (ix1 < 0)
+            {
+                yield break;
+            }
+
+            indices[ix1]++;
+
+            for (var ix2 = ix1 + 1; ix2 < values.Length; ix2++)
+            {
+                indices[ix2] = 0;
+            }
+        }
+    }
 }

@@ -22,4 +22,30 @@ public record Position2(long X, long Y)
 
     public long ManhattanDistanceTo(Position2 to)
         => Math.Abs(X - to.X) + Math.Abs(Y - to.Y);
+
+    public IEnumerable<Position2> Adjacent4
+    {
+        get
+        {
+            yield return Offset(0, -1);
+            yield return Offset(1, 0);
+            yield return Offset(0, 1);
+            yield return Offset(-1, 0);
+        }
+    }
+
+    public IEnumerable<Position2> Adjacent8
+    {
+        get
+        {
+            yield return Offset(0, -1);
+            yield return Offset(1, -1);
+            yield return Offset(1, 0);
+            yield return Offset(1, 1);
+            yield return Offset(0, 1);
+            yield return Offset(-1, 1);
+            yield return Offset(-1, 0);
+            yield return Offset(-1, -1);
+        }
+    }
 }

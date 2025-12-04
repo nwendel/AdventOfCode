@@ -63,6 +63,31 @@ public partial class Input : IEnumerable<InputChar>
             .Select(x => x.ToLong())
             .ToArray();
 
+    public IEnumerable<Input> GetLines()
+    {
+        return Lines;
+    }
+
+    public Matrix2<T> ToMatrix<T>(Func<char, T> parse)
+    {
+        var lines = Lines;
+        var width = lines.Max(x => x.Text.Length);
+        var height = lines.Length;
+
+        var matrix = new Matrix2<T>(width, height);
+
+        for (var y = 0; y < height; y++)
+        {
+            var line = lines[y];
+            for (var x = 0; x < line.Text.Length; x++)
+            {
+                matrix[x, y] = parse(line[x].Text);
+            }
+        }
+
+        return matrix;
+    }
+
     public IEnumerator<InputChar> GetEnumerator()
         => Text.Select(x => new InputChar(x)).GetEnumerator();
 
