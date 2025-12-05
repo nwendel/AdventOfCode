@@ -1,4 +1,3 @@
-
 namespace AdventOfCode._2025;
 
 public class Solver_2025_02 : Solver<LongRange[]>
@@ -12,7 +11,7 @@ public class Solver_2025_02 : Solver<LongRange[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(LongRange[] input)
+    protected override Result SolvePart1Core(LongRange[] input)
     {
         var result = 0L;
 
@@ -33,7 +32,7 @@ public class Solver_2025_02 : Solver<LongRange[]>
         return result;
     }
 
-    protected override object SolvePart2Core(LongRange[] input)
+    protected override Result SolvePart2Core(LongRange[] input)
     {
         var result = 0L;
 

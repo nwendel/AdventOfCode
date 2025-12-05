@@ -18,7 +18,7 @@ public class Solver_2024_01 : Solver<ParsedInput>
         return new(left, right);
     }
 
-    protected override object SolvePart1Core(ParsedInput input)
+    protected override Result SolvePart1Core(ParsedInput input)
     {
         var result = input.Left
             .Zip(input.Right)
@@ -27,7 +27,7 @@ public class Solver_2024_01 : Solver<ParsedInput>
         return result;
     }
 
-    protected override object SolvePart2Core(ParsedInput input)
+    protected override Result SolvePart2Core(ParsedInput input)
     {
         var rightGroups = input.Right
             .GroupBy(x => x)

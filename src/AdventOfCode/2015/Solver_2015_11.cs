@@ -9,14 +9,14 @@ public class Solver_2015_11 : Solver<CustomNumber>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(CustomNumber input)
+    protected override Result SolvePart1Core(CustomNumber input)
     {
         var result = NextValid(input);
 
         return result.Value;
     }
 
-    protected override object SolvePart2Core(CustomNumber input)
+    protected override Result SolvePart2Core(CustomNumber input)
     {
         var result = NextValid(NextValid(input));
 

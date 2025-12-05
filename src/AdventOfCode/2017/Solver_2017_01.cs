@@ -11,7 +11,7 @@ public class Solver_2017_01 : Solver<List<long>>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(List<long> input)
+    protected override Result SolvePart1Core(List<long> input)
     {
         input.Add(input[0]);
 
@@ -23,7 +23,7 @@ public class Solver_2017_01 : Solver<List<long>>
         return result;
     }
 
-    protected override object SolvePart2Core(List<long> input)
+    protected override Result SolvePart2Core(List<long> input)
     {
         var result = 0L;
 

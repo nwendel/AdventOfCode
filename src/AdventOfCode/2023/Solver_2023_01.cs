@@ -2,7 +2,7 @@ namespace AdventOfCode2._2023;
 
 public class Solver_2023_01 : Solver
 {
-    protected override object SolvePart1Core(Input input)
+    protected override Result SolvePart1Core(Input input)
     {
         var result = input.Lines
             .Select(x => x.Digits())
@@ -13,7 +13,7 @@ public class Solver_2023_01 : Solver
         return result;
     }
 
-    protected override object SolvePart2Core(Input input)
+    protected override Result SolvePart2Core(Input input)
     {
         var modifiedInput = input
             .Replace("zero", "zero0zero")

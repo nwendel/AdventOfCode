@@ -1,5 +1,3 @@
-
-
 using System.Diagnostics.CodeAnalysis;
 
 namespace AdventOfCode._2015;
@@ -47,7 +45,7 @@ public class Solver_2015_07 : Solver<Instruction[]>
 
     }
 
-    protected override object SolvePart1Core(Instruction[] input)
+    protected override Result SolvePart1Core(Instruction[] input)
     {
         var wires = new Dictionary<string, ushort>();
         var remaining = new List<Instruction>(input);
@@ -57,12 +55,12 @@ public class Solver_2015_07 : Solver<Instruction[]>
         return result;
     }
 
-    protected override object SolvePart2Core(Instruction[] input)
+    protected override Result SolvePart2Core(Instruction[] input)
     {
         var wires = new Dictionary<string, ushort>();
         var remaining = new List<Instruction>(input);
 
-        var b = SolvePart1Core(input);
+        var b = (long)SolvePart1Core(input).Value;
         wires["b"] = (ushort)b;
         remaining.RemoveAll(x => x.Result == "b");
 

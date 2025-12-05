@@ -1,4 +1,3 @@
-
 namespace AdventOfCode._2016;
 
 public class Solver_2016_02 : Solver<Direction4[][]>
@@ -10,7 +9,7 @@ public class Solver_2016_02 : Solver<Direction4[][]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(Direction4[][] input)
+    protected override Result SolvePart1Core(Direction4[][] input)
     {
         var result = 0L;
 
@@ -30,7 +29,7 @@ public class Solver_2016_02 : Solver<Direction4[][]>
         return result;
     }
 
-    protected override object SolvePart2Core(Direction4[][] input)
+    protected override Result SolvePart2Core(Direction4[][] input)
     {
         var result = new StringBuilder();
 

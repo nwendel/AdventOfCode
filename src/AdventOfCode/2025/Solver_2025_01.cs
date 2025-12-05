@@ -17,14 +17,14 @@ public class Solver_2025_01 : Solver<Instruction[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(Instruction[] input)
+    protected override Result SolvePart1Core(Instruction[] input)
     {
         var result = 0L;
         var current = 50L;
 
         foreach (var instruction in input)
         {
-            current = Math.Wrap(current + instruction.Count * (long)instruction.Turn, 0..99);
+            current = Math.Wrap(current + instruction.Count * (long)instruction.Turn, 0..100);
             if (current == 0)
             {
                 result += 1;
@@ -34,7 +34,7 @@ public class Solver_2025_01 : Solver<Instruction[]>
         return result;
     }
 
-    protected override object SolvePart2Core(Instruction[] input)
+    protected override Result SolvePart2Core(Instruction[] input)
     {
         var result = 0L;
         var current = 50L;
@@ -43,7 +43,7 @@ public class Solver_2025_01 : Solver<Instruction[]>
         {
             for (var ix = 0; ix < instruction.Count; ix++)
             {
-                current = Math.Wrap(current + (long)instruction.Turn, 0..99);
+                current = Math.Wrap(current + (long)instruction.Turn, 0..100);
                 if (current == 0)
                 {
                     result += 1;

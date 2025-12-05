@@ -1,5 +1,3 @@
-
-
 namespace AdventOfCode._2025;
 
 public class Solver_2025_03 : Solver<string[]>
@@ -13,14 +11,14 @@ public class Solver_2025_03 : Solver<string[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(string[] input)
+    protected override Result SolvePart1Core(string[] input)
     {
         var result = SolveCore(input, 2);
 
         return result;
     }
 
-    protected override object SolvePart2Core(string[] input)
+    protected override Result SolvePart2Core(string[] input)
     {
         var result = SolveCore(input, 12);
 

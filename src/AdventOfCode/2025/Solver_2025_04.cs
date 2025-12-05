@@ -11,7 +11,7 @@ public class Solver_2025_04 : Solver<Matrix2<Element>>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(Matrix2<Element> input)
+    protected override Result SolvePart1Core(Matrix2<Element> input)
     {
         var result = 0L;
 
@@ -26,7 +26,7 @@ public class Solver_2025_04 : Solver<Matrix2<Element>>
         return result;
     }
 
-    protected override object SolvePart2Core(Matrix2<Element> input)
+    protected override Result SolvePart2Core(Matrix2<Element> input)
     {
         var result = 0L;
 

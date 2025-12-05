@@ -14,14 +14,14 @@ public class Solver_2025_05 : Solver<ParsedInput>
         return result;
     }
 
-    protected override object SolvePart1Core(ParsedInput input)
+    protected override Result SolvePart1Core(ParsedInput input)
     {
         var result = input.Ids.Count(id => input.Ranges.Any(range => range.Contains(id)));
 
         return result;
     }
 
-    protected override object SolvePart2Core(ParsedInput input)
+    protected override Result SolvePart2Core(ParsedInput input)
     {
         BigInteger result = 0;
 

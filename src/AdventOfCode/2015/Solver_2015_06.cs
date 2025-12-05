@@ -25,7 +25,7 @@ public class Solver_2015_06 : Solver<Action[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(Action[] input)
+    protected override Result SolvePart1Core(Action[] input)
     {
         var lights = new Matrix2<bool>(1000, 1000);
 
@@ -46,7 +46,7 @@ public class Solver_2015_06 : Solver<Action[]>
         return result;
     }
 
-    protected override object SolvePart2Core(Action[] input)
+    protected override Result SolvePart2Core(Action[] input)
     {
         var lights = new Matrix2<long>(1000, 1000);
 

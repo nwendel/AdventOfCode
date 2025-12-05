@@ -10,7 +10,7 @@ public class Solver_2015_02 : Solver<long[][]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(long[][] input)
+    protected override Result SolvePart1Core(long[][] input)
     {
         var result = input
             .Select(x => new[] { x[0] * x[1], x[1] * x[2], x[0] * x[2] })
@@ -19,7 +19,7 @@ public class Solver_2015_02 : Solver<long[][]>
         return result;
     }
 
-    protected override object SolvePart2Core(long[][] input)
+    protected override Result SolvePart2Core(long[][] input)
     {
         var result = input
             .Select(x => x.OrderBy(e => e).ToArray())

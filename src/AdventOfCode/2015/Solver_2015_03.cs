@@ -12,7 +12,7 @@ public class Solver_2015_03 : Solver<Direction4[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(Direction4[] input)
+    protected override Result SolvePart1Core(Direction4[] input)
     {
         var santa = new Position2(0, 0);
         var visited = new HashSet<Position2> { santa };
@@ -26,7 +26,7 @@ public class Solver_2015_03 : Solver<Direction4[]>
         return visited.Count;
     }
 
-    protected override object SolvePart2Core(Direction4[] input)
+    protected override Result SolvePart2Core(Direction4[] input)
     {
         var alternate = false;
         var santa = new Position2(0, 0);

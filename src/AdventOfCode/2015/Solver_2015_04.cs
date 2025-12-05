@@ -1,4 +1,3 @@
-
 using System.Security.Cryptography;
 using System.Text;
 
@@ -8,14 +7,14 @@ public class Solver_2015_04 : Solver
 {
     private static readonly MD5 _algorithm = MD5.Create();
 
-    protected override object SolvePart1Core(Input input)
+    protected override Result SolvePart1Core(Input input)
     {
         var result = SolveCore(input, "00000");
 
         return result;
     }
 
-    protected override object SolvePart2Core(Input input)
+    protected override Result SolvePart2Core(Input input)
     {
         var result = SolveCore(input, "000000");
 

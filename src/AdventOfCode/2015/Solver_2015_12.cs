@@ -4,13 +4,13 @@ namespace AdventOfCode._2015;
 
 public class Solver_2015_12 : Solver
 {
-    protected override object SolvePart1Core(Input input)
+    protected override Result SolvePart1Core(Input input)
     {
         var result = input.ExtractNumbers().Sum();
         return result;
     }
 
-    protected override object SolvePart2Core(Input input)
+    protected override Result SolvePart2Core(Input input)
     {
         var json = JsonDocument.Parse(input.Text);
         var result = SumJson(json.RootElement);

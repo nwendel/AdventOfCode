@@ -3,7 +3,7 @@ namespace AdventOfCode._2015;
 
 public class Solver_2015_01 : Solver
 {
-    protected override object SolvePart1Core(Input input)
+    protected override Result SolvePart1Core(Input input)
     {
         var text = input.Text;
         var result = text.Count(c => c == '(') - text.Count(c => c == ')');
@@ -11,7 +11,7 @@ public class Solver_2015_01 : Solver
         return result;
     }
 
-    protected override object SolvePart2Core(Input input)
+    protected override Result SolvePart2Core(Input input)
     {
         var text = input.Text;
 

@@ -11,14 +11,14 @@ public class Solver_2018_01 : Solver<long[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(long[] input)
+    protected override Result SolvePart1Core(long[] input)
     {
         var result = input.Sum();
 
         return result;
     }
 
-    protected override object SolvePart2Core(long[] input)
+    protected override Result SolvePart2Core(long[] input)
     {
         var result = 0L;
 

@@ -11,7 +11,7 @@ public class Solver_2015_08 : Solver<string[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(string[] input)
+    protected override Result SolvePart1Core(string[] input)
     {
         var result = 0L;
 
@@ -28,7 +28,7 @@ public class Solver_2015_08 : Solver<string[]>
         return result;
     }
 
-    protected override object SolvePart2Core(string[] input)
+    protected override Result SolvePart2Core(string[] input)
     {
         var result = 0L;
 

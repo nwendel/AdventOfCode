@@ -14,7 +14,7 @@ public interface ISolver
         }
     }
 
-    object SolvePart1(Input input);
+    Result SolvePart1(Input input);
 
-    object SolvePart2(Input input);
+    Result SolvePart2(Input input);
 }

@@ -1,4 +1,3 @@
-
 namespace AdventOfCode._2020;
 
 public class Solver_2020_01 : Solver<long[]>
@@ -12,14 +11,14 @@ public class Solver_2020_01 : Solver<long[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(long[] input)
+    protected override Result SolvePart1Core(long[] input)
     {
         var combinations = Combinatorics.Combinations(input, 2);
 
         return SolveCore(combinations);
     }
 
-    protected override object SolvePart2Core(long[] input)
+    protected override Result SolvePart2Core(long[] input)
     {
         var combinations = Combinatorics.Combinations(input, 3);
 

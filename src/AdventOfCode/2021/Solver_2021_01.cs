@@ -11,7 +11,7 @@ public class Solver_2021_01 : Solver<long[]>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(long[] input)
+    protected override Result SolvePart1Core(long[] input)
     {
         var result = input
             .SlidingChunk(2)
@@ -21,7 +21,7 @@ public class Solver_2021_01 : Solver<long[]>
         return result;
     }
 
-    protected override object SolvePart2Core(long[] input)
+    protected override Result SolvePart2Core(long[] input)
     {
         var modifiedInput = input
             .SlidingChunk(3)

@@ -8,14 +8,14 @@ public class Solver_2015_10 : Solver<string>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(string input)
+    protected override Result SolvePart1Core(string input)
     {
         var result = LookAndSay(input, 40).Length;
 
         return result;
     }
 
-    protected override object SolvePart2Core(string input)
+    protected override Result SolvePart2Core(string input)
     {
         var result = LookAndSay(input, 50).Length;
 

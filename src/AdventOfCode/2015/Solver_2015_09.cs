@@ -1,4 +1,3 @@
-
 namespace AdventOfCode._2015;
 
 internal class Solver_2015_09 : Solver<Graph<long>>
@@ -31,14 +30,14 @@ internal class Solver_2015_09 : Solver<Graph<long>>
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(Graph<long> input)
+    protected override Result SolvePart1Core(Graph<long> input)
     {
         var result = SolveCore(input).Min();
 
         return result;
     }
 
-    protected override object SolvePart2Core(Graph<long> input)
+    protected override Result SolvePart2Core(Graph<long> input)
     {
         var result = SolveCore(input).Max();
         return result;
