@@ -24,5 +24,14 @@ public static class Extensions
             => self
                 .Select(x => x.ToLongs(separators))
                 .ToArray();
+
+        public LongRange[] ToRanges()
+            => self
+                .Select(x =>
+                {
+                    var parts = x.ToLongs("-");
+                    return new LongRange(parts[0], parts[1]);
+                })
+                .ToArray();
     }
 }
