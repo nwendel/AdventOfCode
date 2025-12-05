@@ -20,10 +20,10 @@ public class InputChar
     public Direction4 ToDirection4()
         => Text switch
         {
-            '^' => Direction4.North,
-            '>' => Direction4.East,
-            'v' => Direction4.South,
-            '<' => Direction4.West,
+            '^' or 'U' => Direction4.North,
+            '>' or 'R' => Direction4.East,
+            'v' or 'D' => Direction4.South,
+            '<' or 'L' => Direction4.West,
             _ => throw new InvalidOperationException($"Invalid Direction4 character: {Text}"),
         };
 

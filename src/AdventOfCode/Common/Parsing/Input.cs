@@ -56,6 +56,10 @@ public partial class Input : IEnumerable<InputChar>
         .Select(x => new Input(x))
         .ToArray();
 
+    public Direction4[] ToDirection4s() => this
+        .Select(x => x.ToDirection4())
+        .ToArray();
+
     public long ToLong() => long.Parse(Text);
 
     public long[] ToLongs(params string[] separators)

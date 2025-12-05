@@ -12,6 +12,11 @@ public static class Extensions
 
     extension(IEnumerable<Input> self)
     {
+        public Direction4[][] ToDirection4s()
+            => self
+                .Select(x => x.ToDirection4s())
+                .ToArray();
+
         public long[] ToLongs()
             => self
                 .Select(x => x.ToLong())
@@ -32,6 +37,14 @@ public static class Extensions
                     var parts = x.ToLongs("-");
                     return new LongRange(parts[0], parts[1]);
                 })
+                .ToArray();
+
+        public Input[][] Split(string separator)
+            => self.Split([separator]);
+
+        public Input[][] Split(string[] separators)
+            => self
+                .Select(x => x.Split(separators))
                 .ToArray();
     }
 }

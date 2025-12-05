@@ -5,10 +5,14 @@ public record Position2(long X, long Y)
 {
     public static readonly Position2 Zero = new(0, 0);
 
+    public Position2 Clamp(Rectangle2 bounds) => new(
+        Math.Clamp(X, bounds.X1, bounds.X2),
+        Math.Clamp(Y, bounds.Y1, bounds.Y2));
+
     public Position2 Offset(long dx, long dy)
         => new(X + dx, Y + dy);
 
-    internal Position2 Move(Direction4 direction)
+    public Position2 Move(Direction4 direction)
         => Move(direction, 1);
 
     public Position2 Move(Direction4 direction, long distance)
@@ -22,6 +26,9 @@ public record Position2(long X, long Y)
 
     public long ManhattanDistanceTo(Position2 to)
         => Math.Abs(X - to.X) + Math.Abs(Y - to.Y);
+
+    public int ToIndex(Rectangle2 bounds)
+        => (int)((Y - bounds.Y1) * (bounds.X2 - bounds.X1 + 1) + (X - bounds.X1));
 
     public IEnumerable<Position2> Adjacent4
     {

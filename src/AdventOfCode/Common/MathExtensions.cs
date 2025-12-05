@@ -8,7 +8,7 @@ public static class MathExtensions
         {
             var min = range.Start.Value;
             var max = range.End.Value;
-            var rangeSize = max - min + 1;
+            var rangeSize = max - min;
 
             var wrappedValue = value - min;
             while (wrappedValue < 0)
