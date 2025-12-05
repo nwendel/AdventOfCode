@@ -81,6 +81,43 @@ public static class Combinatorics
         }
     }
 
+    public static IEnumerable<T[]> Multicombinations<T>(T[] values, int count)
+    {
+        if (count <= 0 || values.Length == 0)
+        {
+            yield break;
+        }
+
+        var indices = new int[count];
+        while (true)
+        {
+            var result = new T[count];
+            for (var i = 0; i < count; i++)
+            {
+                result[i] = values[indices[i]];
+            }
+
+            yield return result;
+
+            var ix = count - 1;
+            while (ix >= 0 && indices[ix] == values.Length - 1)
+            {
+                ix--;
+            }
+
+            if (ix < 0)
+            {
+                yield break;
+            }
+
+            var newValue = indices[ix] + 1;
+            for (var i = ix; i < count; i++)
+            {
+                indices[i] = newValue;
+            }
+        }
+    }
+
     public static IEnumerable<T[]> Permutations<T>(T[] values)
     {
         var indices = new int[values.Length];
