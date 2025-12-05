@@ -2,6 +2,43 @@ namespace AdventOfCode.Common;
 
 public static class Combinatorics
 {
+    public static IEnumerable<T[]> CartesianProduct<T>(T[] values, int count)
+    {
+        if (count <= 0)
+        {
+            yield break;
+        }
+
+        var indices = new int[count];
+        while (true)
+        {
+            var result = new T[count];
+            for (var i = 0; i < count; i++)
+            {
+                result[i] = values[indices[i]];
+            }
+
+            yield return result;
+
+            var ix = count - 1;
+            while (ix >= 0 && indices[ix] == values.Length - 1)
+            {
+                ix--;
+            }
+
+            if (ix < 0)
+            {
+                yield break;
+            }
+
+            indices[ix]++;
+            for (var i = ix + 1; i < count; i++)
+            {
+                indices[i] = 0;
+            }
+        }
+    }
+
     public static IEnumerable<T[]> Combinations<T>(T[] values, int count)
     {
         if (count > values.Length)
