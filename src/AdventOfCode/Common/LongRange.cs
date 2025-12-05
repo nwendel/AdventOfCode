@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace AdventOfCode.Common;
 
-public class LongRange
+public class LongRange : IEnumerable<long>
 {
     public LongRange(long start, long end)
     {
@@ -16,4 +18,17 @@ public class LongRange
 
     public bool Overlaps(LongRange other)
         => Start <= other.End && End >= other.Start;
+
+    public IEnumerator<long> GetEnumerator()
+    {
+        for (var ix = Start; ix <= End; ix++)
+        {
+            yield return ix;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }

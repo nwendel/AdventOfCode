@@ -1,25 +1,24 @@
 
 namespace AdventOfCode._2025;
 
-public class Solver_2025_02 : Solver<long[][]>
+public class Solver_2025_02 : Solver<LongRange[]>
 {
-    protected override long[][] ParseInput(Input input)
+    protected override LongRange[] ParseInput(Input input)
     {
         var parsedInput = input
-            .Split(",", "-")
-            .Chunk(2)
-            .ToLongs();
+            .Split(",")
+            .ToRanges();
 
         return parsedInput;
     }
 
-    protected override object SolvePart1Core(long[][] input)
+    protected override object SolvePart1Core(LongRange[] input)
     {
         var result = 0L;
 
         foreach (var range in input)
         {
-            for (var ix = range[0]; ix <= range[1]; ix++)
+            foreach (var ix in range)
             {
                 var id = $"{ix}";
 
@@ -34,13 +33,13 @@ public class Solver_2025_02 : Solver<long[][]>
         return result;
     }
 
-    protected override object SolvePart2Core(long[][] input)
+    protected override object SolvePart2Core(LongRange[] input)
     {
         var result = 0L;
 
         foreach (var range in input)
         {
-            for (var ix = range[0]; ix <= range[1]; ix++)
+            foreach (var ix in range)
             {
                 var id = $"{ix}";
 

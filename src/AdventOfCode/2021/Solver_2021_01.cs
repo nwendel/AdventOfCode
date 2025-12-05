@@ -14,7 +14,7 @@ public class Solver_2021_01 : Solver<long[]>
     protected override object SolvePart1Core(long[] input)
     {
         var result = input
-            .SlidingWindow(2)
+            .SlidingChunk(2)
             .Where(x => x[1] > x[0])
             .Count();
 
@@ -24,7 +24,7 @@ public class Solver_2021_01 : Solver<long[]>
     protected override object SolvePart2Core(long[] input)
     {
         var modifiedInput = input
-            .SlidingWindow(3)
+            .SlidingChunk(3)
             .Select(x => x.Sum())
             .ToArray();
 

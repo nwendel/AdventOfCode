@@ -16,7 +16,7 @@ public class Solver_2017_01 : Solver<List<long>>
         input.Add(input[0]);
 
         var result = input
-            .SlidingWindow(2)
+            .SlidingChunk(2)
             .Where(x => x[0] == x[1])
             .Sum(x => x[0]);
 

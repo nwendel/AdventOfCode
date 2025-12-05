@@ -15,7 +15,7 @@ public static class EnumerableExtensions
             }
         }
 
-        public IEnumerable<T[]> SlidingWindow(int size)
+        public IEnumerable<T[]> SlidingChunk(int size)
         {
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(size);
 
