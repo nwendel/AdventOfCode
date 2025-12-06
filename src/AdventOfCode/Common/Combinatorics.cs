@@ -2,6 +2,9 @@ namespace AdventOfCode.Common;
 
 public static class Combinatorics
 {
+    public static IEnumerable<T[]> CartesianProduct<T>(T[] values)
+        => CartesianProduct(values, values.Length);
+
     public static IEnumerable<T[]> CartesianProduct<T>(T[] values, int count)
     {
         if (count <= 0)
@@ -81,7 +84,10 @@ public static class Combinatorics
         }
     }
 
-    public static IEnumerable<T[]> Multicombinations<T>(T[] values, int count)
+    public static IEnumerable<T[]> MultiCombinations<T>(T[] values)
+        => MultiCombinations(values, values.Length);
+
+    public static IEnumerable<T[]> MultiCombinations<T>(T[] values, int count)
     {
         if (count <= 0 || values.Length == 0)
         {
@@ -119,38 +125,48 @@ public static class Combinatorics
     }
 
     public static IEnumerable<T[]> Permutations<T>(T[] values)
+        => Permutations(values, values.Length);
+
+    public static IEnumerable<T[]> Permutations<T>(T[] values, int count)
     {
-        var indices = new int[values.Length];
-        while (true)
+        if (count < 0 || count > values.Length)
         {
-            if (indices.Distinct().Count() == indices.Length)
-            {
-                var combination = new T[values.Length];
-                for (var i = 0; i < values.Length; i++)
-                {
-                    combination[i] = values[indices[i]];
-                }
+            yield break;
+        }
 
-                yield return combination;
+        var used = new bool[values.Length];
+        var current = new T[count];
+
+        foreach (var permutation in PermutationsRecursive(values, count, used, current, 0))
+        {
+            yield return permutation;
+        }
+    }
+
+    private static IEnumerable<T[]> PermutationsRecursive<T>(T[] values, int count, bool[] used, T[] current, int depth)
+    {
+        if (depth == count)
+        {
+            yield return (T[])current.Clone();
+            yield break;
+        }
+
+        for (var i = 0; i < values.Length; i++)
+        {
+            if (used[i])
+            {
+                continue;
             }
 
-            var ix1 = values.Length - 1;
-            while (ix1 >= 0 && indices[ix1] == values.Length - 1)
+            used[i] = true;
+            current[depth] = values[i];
+
+            foreach (var perm in PermutationsRecursive(values, count, used, current, depth + 1))
             {
-                ix1--;
+                yield return perm;
             }
 
-            if (ix1 < 0)
-            {
-                yield break;
-            }
-
-            indices[ix1]++;
-
-            for (var ix2 = ix1 + 1; ix2 < values.Length; ix2++)
-            {
-                indices[ix2] = 0;
-            }
+            used[i] = false;
         }
     }
 }

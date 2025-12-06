@@ -4,4 +4,5 @@
     <File Path=".gitignore" />
   </Folder>
   <Project Path="src/AdventOfCode/AdventOfCode.csproj" />
+  <Project Path="tests/AdventOfCode.Tests/AdventOfCode.Tests.csproj" Id="696312b6-9c4e-437a-8fd4-38c54454cc3f" />
 </Solution>
