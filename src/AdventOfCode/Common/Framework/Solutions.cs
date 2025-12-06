@@ -160,10 +160,10 @@ public partial class Solutions
     }
 
     private static string GetInputPath(Day day)
-        => $"../../../{day.Year}/Inputs/{day.Year}_{day.Number:00}.txt";
+        => $"../../../{day.Year}/{day.Number:00}/{day.Year}_{day.Number:00}.txt";
 
     private static string GetDescriptionPath(Day day, DescriptionFormat format)
-        => $"../../../{day.Year}/Descriptions/{day.Year}_{day.Number:00}.{format.ToFileExtension()}";
+        => $"../../../{day.Year}/{day.Number:00}/{day.Year}_{day.Number:00}.{format.ToFileExtension()}";
 
     private static void Solve(ISolver solver, int part, Func<ISolver, object> solve)
     {
