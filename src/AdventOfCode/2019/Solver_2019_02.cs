@@ -40,7 +40,7 @@ public class Solver_2019_02 : Solver
         throw new UnreachableException();
     }
 
-    private long SolveCore(long[] program)
+    private static long SolveCore(long[] program)
     {
         for (var ix = 0; ix < program.Length; ix += 4)
         {
