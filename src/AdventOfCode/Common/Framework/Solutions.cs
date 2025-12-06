@@ -133,6 +133,11 @@ public partial class Solutions
         }
 
         var input = await File.ReadAllTextAsync(path);
+        if (input[^1] == '\n')
+        {
+            input = input[..^1];
+        }
+
         return new(input);
     }
 

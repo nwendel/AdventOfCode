@@ -1,5 +1,5 @@
 
-namespace AdventOfCode._2015;
+namespace AdventOfCode._2015_02;
 
 public class Solver_2015_02 : Solver<long[][]>
 {

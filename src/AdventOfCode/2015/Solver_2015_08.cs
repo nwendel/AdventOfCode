@@ -1,4 +1,4 @@
-namespace AdventOfCode._2015;
+namespace AdventOfCode._2015_08;
 
 public class Solver_2015_08 : Solver<string[]>
 {

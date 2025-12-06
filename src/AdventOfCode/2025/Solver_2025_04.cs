@@ -1,4 +1,4 @@
-namespace AdventOfCode._2025;
+namespace AdventOfCode._2025_04;
 
 public class Solver_2025_04 : Solver<Matrix2<Element>>
 {

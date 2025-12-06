@@ -1,4 +1,4 @@
-namespace AdventOfCode._2015;
+namespace AdventOfCode._2015_05;
 
 public class Solver_2015_06 : Solver<Action[]>
 {

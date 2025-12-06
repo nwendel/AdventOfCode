@@ -1,4 +1,4 @@
-namespace AdventOfCode._2020;
+namespace AdventOfCode._2020_01;
 
 public class Solver_2020_01 : Solver<long[]>
 {

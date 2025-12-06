@@ -6,7 +6,7 @@ public partial class Input : IEnumerable<InputChar>
 {
     public Input(string text)
     {
-        Text = text.Trim();
+        Text = text;
     }
 
     public string Text { get; }
@@ -66,6 +66,9 @@ public partial class Input : IEnumerable<InputChar>
         => Split(separators)
             .Select(x => x.ToLong())
             .ToArray();
+
+    public Matrix2<char> ToMatrix()
+        => ToMatrix(x => x);
 
     public Matrix2<T> ToMatrix<T>(Func<char, T> parse)
     {

@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace AdventOfCode._2015;
+namespace AdventOfCode._2015_12;
 
 public class Solver_2015_12 : Solver
 {

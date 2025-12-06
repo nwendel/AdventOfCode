@@ -1,4 +1,4 @@
-namespace AdventOfCode._2022;
+namespace AdventOfCode._2022_01;
 
 public class Solver_2022_01 : Solver
 {

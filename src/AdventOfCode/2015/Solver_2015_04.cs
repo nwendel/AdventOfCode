@@ -1,7 +1,6 @@
 using System.Security.Cryptography;
-using System.Text;
 
-namespace AdventOfCode._2015;
+namespace AdventOfCode._2015_04;
 
 public class Solver_2015_04 : Solver
 {

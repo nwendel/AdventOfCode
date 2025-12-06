@@ -1,4 +1,4 @@
-namespace AdventOfCode._2016;
+namespace AdventOfCode._2016_01;
 
 public class Solver_2016_01 : Solver<Instruction[]>
 {

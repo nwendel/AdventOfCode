@@ -1,4 +1,4 @@
-namespace AdventOfCode._2015;
+namespace AdventOfCode._2015_09;
 
 internal class Solver_2015_09 : Solver<Graph<long>>
 {

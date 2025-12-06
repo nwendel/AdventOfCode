@@ -1,4 +1,4 @@
-namespace AdventOfCode._2015;
+namespace AdventOfCode._2015_13;
 
 [Slow(Part2 = true)]
 public class Solver_2015_13 : Solver<ParsedInput>

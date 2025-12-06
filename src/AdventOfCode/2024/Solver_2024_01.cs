@@ -1,4 +1,4 @@
-namespace AdventOfCode2._2024;
+namespace AdventOfCode2._2024_01;
 
 public class Solver_2024_01 : Solver<ParsedInput>
 {

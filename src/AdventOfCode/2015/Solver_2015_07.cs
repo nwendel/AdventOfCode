@@ -1,6 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
-
-namespace AdventOfCode._2015;
+namespace AdventOfCode._2015_07;
 
 // TODO: Can this be simplified?
 public class Solver_2015_07 : Solver<Instruction[]>

@@ -1,4 +1,4 @@
-namespace AdventOfCode2._2025;
+namespace AdventOfCode2._2025_01;
 
 // TODO: Common parsing
 public class Solver_2025_01 : Solver<Instruction[]>
@@ -54,7 +54,6 @@ public class Solver_2025_01 : Solver<Instruction[]>
         return result;
     }
 }
-
 public record Instruction(
     Turn2 Turn,
     long Count);

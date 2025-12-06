@@ -42,6 +42,22 @@ public class Matrix2<T>
     public IEnumerable<T> All
         => Positions.Select(p => this[p]);
 
+    public IEnumerable<T[]> Columns
+    {
+        get
+        {
+            for (var x = 0; x < Width; x++)
+            {
+                var column = new T[Height];
+                for (var y = 0; y < Height; y++)
+                {
+                    column[y] = _values[x, y];
+                }
+                yield return column;
+            }
+        }
+    }
+
     public bool Contains(Position2 position)
         => position.X >= 0 && position.X < Width && position.Y >= 0 && position.Y < Height;
 

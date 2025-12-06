@@ -1,6 +1,4 @@
-using System.Numerics;
-
-namespace AdventOfCode._2025;
+namespace AdventOfCode._2025_05;
 
 public class Solver_2025_05 : Solver<ParsedInput>
 {

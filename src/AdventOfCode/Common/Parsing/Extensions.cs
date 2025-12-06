@@ -8,6 +8,26 @@ public static class Extensions
             => self
                 .Select(x => x.ToLongs())
                 .ToArray();
+
+        public Matrix2<Input> ToMatrix()
+        {
+            var rows = self.ToArray();
+            var height = rows.Length;
+            var width = rows.Max(r => r.Count());
+            var matrix = new Matrix2<Input>(width, height);
+
+            for (var y = 0; y < height; y++)
+            {
+                var row = rows[y].ToArray();
+                for (var x = 0; x < row.Length; x++)
+                {
+                    matrix[x, y] = row[x];
+                }
+            }
+
+            return matrix;
+        }
+
     }
 
     extension(IEnumerable<Input> self)
