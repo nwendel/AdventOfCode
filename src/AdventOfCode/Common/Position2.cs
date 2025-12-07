@@ -15,6 +15,9 @@ public record Position2(long X, long Y)
     public Position2 Move(Direction4 direction)
         => Move(direction, 1);
 
+    public IEnumerable<Position2> EnumerateMoves(Direction4[] directions)
+        => directions.Select(direction => Move(direction));
+
     public Position2 Move(Direction4 direction, long distance)
         => direction switch
         {

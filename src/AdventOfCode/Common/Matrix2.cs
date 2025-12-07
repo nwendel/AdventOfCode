@@ -79,4 +79,17 @@ public class Matrix2<T>
             }
         }
     }
+
+    public Position2 Locate(T value)
+    {
+        foreach (var position in Positions)
+        {
+            if (EqualityComparer<T>.Default.Equals(this[position], value))
+            {
+                return position;
+            }
+        }
+
+        throw new InvalidOperationException("Value not found in matrix");
+    }
 }
