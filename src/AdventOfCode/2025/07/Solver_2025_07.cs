@@ -12,39 +12,22 @@ public class Solver_2025_07 : Solver<ParsedInput>
 
     protected override Result SolvePart1Core(ParsedInput input)
     {
-        var result = SimulateBeams(
-            input.Matrix,
-            input.Start);
-
-        return result;
-    }
-
-    protected override Result SolvePart2Core(ParsedInput input)
-    {
-        var memo = new Memoize<Position2, long>((position, memo) => CountPaths(input.Matrix, position, memo));
-        var result = memo.Get(input.Start);
-
-        return result;
-    }
-
-    private static long SimulateBeams(Matrix2<char> matrix, Position2 start)
-    {
         var splits = 0L;
         var visited = new HashSet<Position2>();
         var queue = new Queue<Position2>();
 
-        queue.Enqueue(start);
-        visited.Add(start);
+        queue.Enqueue(input.Start);
+        visited.Add(input.Start);
 
         while (queue.Count > 0)
         {
             var next = queue.Dequeue().Move(Direction4.South);
-            if (!matrix.Contains(next))
+            if (!input.Matrix.Contains(next))
             {
                 continue;
             }
 
-            var cell = matrix[next];
+            var cell = input.Matrix[next];
             if (cell == '^')
             {
                 if (visited.Add(next))
@@ -53,14 +36,14 @@ public class Solver_2025_07 : Solver<ParsedInput>
 
                     foreach (var neighbor in next.EnumerateMoves([Direction4.West, Direction4.East]))
                     {
-                        if (matrix.Contains(neighbor) && visited.Add(neighbor))
+                        if (input.Matrix.Contains(neighbor) && visited.Add(neighbor))
                         {
                             queue.Enqueue(neighbor);
                         }
                     }
                 }
             }
-            else if (cell != '^')
+            else
             {
                 if (visited.Add(next))
                 {
@@ -70,6 +53,14 @@ public class Solver_2025_07 : Solver<ParsedInput>
         }
 
         return splits;
+    }
+
+    protected override Result SolvePart2Core(ParsedInput input)
+    {
+        var memo = new Memoize<Position2, long>((position, memo) => CountPaths(input.Matrix, position, memo));
+        var result = memo.Get(input.Start);
+
+        return result;
     }
 
     private static long CountPaths(Matrix2<char> matrix, Position2 current, Memoize<Position2, long> memo)
