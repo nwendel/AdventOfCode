@@ -9,14 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="2024\Descriptions\**" />
+    <EmbeddedResource Remove="2024\Descriptions\**" />
+    <None Remove="2024\Descriptions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentRegistration" Version="3.1.1" />
     <PackageReference Include="Html2Markdown" Version="7.1.1.19" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="2024\Descriptions\" />
   </ItemGroup>
 
 </Project>

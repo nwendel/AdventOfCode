@@ -389,7 +389,8 @@ FodyWeavers.xsd
 
 # Windows Installer files from build outputs
 *.cab
-*.msi*.msix
+*.msi
+*.msix
 *.msm
 *.msp
 
@@ -397,6 +398,6 @@ FodyWeavers.xsd
 *.sln.iml
 
 # AoC
-src/AdventOfCode/*/*/*_Description.txt
-src/AdventOfCode/*/*/*_Description.html
-src/AdventOfCode/*/*/*_Input.md
+**/*_Description.md
+**/*_Description.html
+**/*_Input.txt
