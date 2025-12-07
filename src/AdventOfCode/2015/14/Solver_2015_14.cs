@@ -13,7 +13,7 @@ public class Solver_2015_14 : Solver<Reindeer[]>
     protected override Result SolvePart1Core(Reindeer[] input)
     {
         var result = input
-            .Select(reindeer => CalculateDistance(reindeer, 2503))
+            .Select(x => CalculateDistance(x, 2503))
             .Max();
 
         return result;
@@ -26,13 +26,13 @@ public class Solver_2015_14 : Solver<Reindeer[]>
         for (var time = 1; time <= 2503; time++)
         {
             var distances = input
-                .Select(reindeer => (reindeer.Name, Distance: CalculateDistance(reindeer, time)))
+                .Select(x => (x.Name, Distance: CalculateDistance(x, time)))
                 .ToArray();
 
-            var maxDistance = distances.Max(x => x.Distance);
+            var max = distances.Max(x => x.Distance);
             foreach (var (name, distance) in distances)
             {
-                if (distance == maxDistance)
+                if (distance == max)
                 {
                     points[name]++;
                 }
