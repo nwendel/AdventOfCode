@@ -5,16 +5,7 @@ public class Solver_2020_02 : Solver<PasswordEntry[]>
     protected override PasswordEntry[] ParseInput(Input input)
     {
         var parsedInput = input.Lines
-            .Select(x =>
-            {
-                var parts = x.Text.Split([':', ' ', '-'], StringSplitOptions.RemoveEmptyEntries);
-                return new PasswordEntry(
-                    Min: int.Parse(parts[0]),
-                    Max: int.Parse(parts[1]),
-                    Letter: parts[2][0],
-                    Password: parts[3]);
-            })
-            .ToArray();
+            .Parse<PasswordEntry>("{Min}-{Max} {Letter}: {Password}");
 
         return parsedInput;
     }

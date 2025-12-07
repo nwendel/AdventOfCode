@@ -1,6 +1,5 @@
 namespace AdventOfCode2._2025_01;
 
-// TODO: Common parsing
 public class Solver_2025_01 : Solver<Instruction[]>
 {
     protected override Instruction[] ParseInput(Input input)

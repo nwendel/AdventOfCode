@@ -66,5 +66,10 @@ public static class Extensions
             => self
                 .Select(x => x.Split(separators))
                 .ToArray();
+
+        public T[] Parse<T>(string format)
+            => self
+                .Select(x => InputFormatParser.ParseLine<T>(x.Text, format))
+                .ToArray();
     }
 }

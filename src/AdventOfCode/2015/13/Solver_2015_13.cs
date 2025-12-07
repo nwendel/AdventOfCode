@@ -1,20 +1,23 @@
 namespace AdventOfCode._2015_13;
 
+// TODO: Maybe use Graph here?
 [Slow(Part2 = true)]
 public class Solver_2015_13 : Solver<ParsedInput>
 {
     protected override ParsedInput ParseInput(Input input)
     {
         var lines = input.Lines
-            .Split([" ", "."])
-            .ToArray();
+            .Parse<HappinessRule>("{Person} would {Direction} {Amount} happiness units by sitting next to {Neighbor}.");
+
         var happinessDeltas = lines.ToDictionary(
-            k => Key(k.First().Text, k.Last().Text),
-            v => v[3].ToLong() * (v[2].Text == "gain" ? 1 : -1));
+            k => Key(k.Person, k.Neighbor),
+            v => v.Amount * (long)v.Direction);
+
         var people = lines
-            .Select(x => x.First().Text)
+            .Select(x => x.Person)
             .Distinct()
             .ToArray();
+
         var result = new ParsedInput(
             People: people,
             Deltas: happinessDeltas);
@@ -71,6 +74,18 @@ public class Solver_2015_13 : Solver<ParsedInput>
     private static string Key(string who, string neighbor)
         => $"{who}->{neighbor}";
 }
+
+public enum Direction
+{
+    Lose = -1,
+    Gain = 1
+}
+
+public record HappinessRule(
+    string Person,
+    Direction Direction,
+    long Amount,
+    string Neighbor);
 
 public record ParsedInput(
     string[] People,

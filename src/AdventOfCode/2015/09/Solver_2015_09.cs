@@ -5,21 +5,11 @@ internal class Solver_2015_09 : Solver<Graph<long>>
     protected override Graph<long> ParseInput(Input input)
     {
         var lines = input.Lines
-            .Select(x => x.Split(" to ", " = "))
-            .Select(x => new
-            {
-                From = new GraphNode(x[0].Text),
-                To = new GraphNode(x[1].Text),
-                Distance = x[2].ToLong(),
-            })
-            .ToArray();
+            .Parse<Route>("{From} to {To} = {Distance}");
 
-        var nodes = new HashSet<GraphNode>();
-        foreach (var line in lines)
-        {
-            nodes.Add(line.From);
-            nodes.Add(line.To);
-        }
+        var nodes = lines
+            .SelectMany(x => new[] { x.From, x.To })
+            .ToHashSet();
 
         var edges = lines
             .Select(x => new GraphEdge<long>(x.From, x.To, x.Distance))
@@ -43,7 +33,7 @@ internal class Solver_2015_09 : Solver<Graph<long>>
         return result;
     }
 
-    private IEnumerable<long> SolveCore(Graph<long> input)
+    private static IEnumerable<long> SolveCore(Graph<long> input)
     {
         var permutations = Combinatorics.Permutations(input.Nodes);
 
@@ -61,3 +51,8 @@ internal class Solver_2015_09 : Solver<Graph<long>>
         }
     }
 }
+
+public record Route(
+    GraphNode From,
+    GraphNode To,
+    long Distance);

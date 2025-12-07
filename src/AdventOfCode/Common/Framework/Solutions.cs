@@ -141,7 +141,7 @@ public partial class Solutions
         return new(input);
     }
 
-    private async Task<Answers> ParseAnswers(Day day)
+    private static async Task<Answers> ParseAnswers(Day day)
     {
         var path = GetDescriptionPath(day, DescriptionFormat.Html);
         var description = await File.ReadAllTextAsync(path);
