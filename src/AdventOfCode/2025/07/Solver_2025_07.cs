@@ -40,14 +40,12 @@ public class Solver_2025_07 : Solver<ParsedInput>
         {
             var current = queue.Dequeue();
             var next = current.Move(Direction4.South);
-
             if (!matrix.Contains(next))
             {
                 continue;
             }
 
             var cell = matrix[next];
-
             if (cell == '^')
             {
                 if (visited.Add(next))
