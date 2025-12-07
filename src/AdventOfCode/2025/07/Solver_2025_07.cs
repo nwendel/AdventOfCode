@@ -38,8 +38,7 @@ public class Solver_2025_07 : Solver<ParsedInput>
 
         while (queue.Count > 0)
         {
-            var current = queue.Dequeue();
-            var next = current.Move(Direction4.South);
+            var next = queue.Dequeue().Move(Direction4.South);
             if (!matrix.Contains(next))
             {
                 continue;
@@ -52,7 +51,7 @@ public class Solver_2025_07 : Solver<ParsedInput>
                 {
                     splits += 1;
 
-                    foreach (var neighbor in current.EnumerateMoves([Direction4.West, Direction4.East]))
+                    foreach (var neighbor in next.EnumerateMoves([Direction4.West, Direction4.East]))
                     {
                         if (matrix.Contains(neighbor) && visited.Add(neighbor))
                         {
