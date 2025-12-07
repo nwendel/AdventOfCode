@@ -41,26 +41,23 @@ public class Solver_2025_06 : Solver
                 continue;
             }
 
-            char? oper = number[^1] is '*' or '+'
-                ? number[^1]
-                : null;
-            if (oper is not null)
+            Func<IEnumerable<long>, long>? operation = number[^1] switch
+            {
+                '*' => nums => nums.Product(),
+                '+' => nums => nums.Sum(),
+                _ => null
+            };
+
+            if (operation is not null)
             {
                 number = number[..^1];
             }
 
             numbers.Add(long.Parse(number));
 
-            if (oper is not null)
+            if (operation is not null)
             {
-                var value = oper switch
-                {
-                    '*' => numbers.Product(),
-                    '+' => numbers.Sum(),
-                    _ => throw new InvalidOperationException($"Unknown operator {oper}"),
-                };
-                result += value;
-
+                result += operation(numbers);
                 numbers = [];
             }
         }

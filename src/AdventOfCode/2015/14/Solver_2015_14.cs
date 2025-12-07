@@ -21,7 +21,7 @@ public class Solver_2015_14 : Solver<Reindeer[]>
 
     protected override Result SolvePart2Core(Reindeer[] input)
     {
-        var points = input.ToDictionary(k => k.Name, _ => 0);
+        var points = new Counter<string, long>();
 
         for (var time = 1; time <= 2503; time++)
         {
@@ -39,7 +39,7 @@ public class Solver_2015_14 : Solver<Reindeer[]>
             }
         }
 
-        var result = points.Values.Max();
+        var result = points.Max(x => x.Value);
 
         return result;
     }
