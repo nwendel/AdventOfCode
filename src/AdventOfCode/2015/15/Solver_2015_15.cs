@@ -26,7 +26,7 @@ internal class Solver_2015_15 : Solver<Ingredient[]>
     {
         var maxScore = 0L;
 
-        foreach (var amounts in Combinatorics.WeakCompositions(ingredients.Length, 100))
+        foreach (var amounts in Combinatorics.WeakCompositions(100, ingredients.Length))
         {
             var calories = 0L;
             var capacity = 0L;

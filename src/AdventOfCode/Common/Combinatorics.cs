@@ -124,7 +124,64 @@ public static class Combinatorics
         }
     }
 
-    public static IEnumerable<int[]> WeakCompositions(int parts, int total)
+    public static IEnumerable<int[]> Partitions(int value)
+    {
+        if (value == 0)
+        {
+            yield return [];
+            yield break;
+        }
+
+        yield return [value];
+
+        for (var ix = value - 1; ix >= 1; ix--)
+        {
+            foreach (var rest in Partitions(value - ix))
+            {
+                if (rest.Length > 0 && ix < rest[0])
+                {
+                    continue;
+                }
+
+                var result = new int[rest.Length + 1];
+                result[0] = ix;
+                Array.Copy(rest, 0, result, 1, rest.Length);
+                yield return result;
+            }
+        }
+    }
+
+    public static IEnumerable<int[]> Partitions(int value, int count)
+    {
+        if (count < 1 || value < count)
+        {
+            yield break;
+        }
+
+        if (count == 1)
+        {
+            yield return [value];
+            yield break;
+        }
+
+        for (var ix = value - count + 1; ix >= 1; ix--)
+        {
+            foreach (var rest in Partitions(value - ix, count - 1))
+            {
+                if (rest.Length > 0 && ix < rest[0])
+                {
+                    continue;
+                }
+
+                var result = new int[count];
+                result[0] = ix;
+                Array.Copy(rest, 0, result, 1, rest.Length);
+                yield return result;
+            }
+        }
+    }
+
+    public static IEnumerable<int[]> WeakCompositions(int total, int parts)
     {
         if (parts == 1)
         {
@@ -134,7 +191,7 @@ public static class Combinatorics
 
         for (var ix = 0; ix <= total; ix++)
         {
-            foreach (var rest in WeakCompositions(parts - 1, total - ix))
+            foreach (var rest in WeakCompositions(total - ix, parts - 1))
             {
                 var result = new int[parts];
                 result[0] = ix;
