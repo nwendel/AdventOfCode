@@ -13,6 +13,8 @@ public class LongRange : IEnumerable<long>
 
     public long End { get; }
 
+    public long Count => End - Start + 1;
+
     public bool Contains(long value)
         => value >= Start && value <= End;
 

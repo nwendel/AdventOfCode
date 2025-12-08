@@ -27,8 +27,7 @@ public class Solver_2025_07 : Solver<ParsedInput>
                 continue;
             }
 
-            var cell = input.Matrix[next];
-            if (cell == '^')
+            if (input.Matrix[next] == '^')
             {
                 if (visited.Add(next))
                 {

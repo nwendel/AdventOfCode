@@ -19,7 +19,7 @@ public static class LongRangeExtensions
                 }
                 else
                 {
-                    var last = merged[merged.Count - 1];
+                    var last = merged[^1];
 
                     if (range.Start <= last.End + 1)
                     {

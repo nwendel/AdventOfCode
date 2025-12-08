@@ -21,13 +21,8 @@ public class Solver_2025_05 : Solver<ParsedInput>
 
     protected override Result SolvePart2Core(ParsedInput input)
     {
-        BigInteger result = 0;
-
         var ranges = input.Ranges.Merge();
-        foreach (var range in ranges)
-        {
-            result += range.End - range.Start + 1;
-        }
+        var result = ranges.Sum(x => x.Count);
 
         return result;
     }

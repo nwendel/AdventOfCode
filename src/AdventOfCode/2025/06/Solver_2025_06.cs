@@ -24,7 +24,6 @@ public class Solver_2025_06 : Solver
         return result;
     }
 
-    // TODO: Can this be simplified?
     protected override Result SolvePart2Core(Input input)
     {
         var result = 0L;

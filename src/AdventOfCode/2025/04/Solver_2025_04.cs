@@ -26,6 +26,7 @@ public class Solver_2025_04 : Solver<Matrix2<Element>>
         return result;
     }
 
+    // TODO: The toRemove list isn't needed?
     protected override Result SolvePart2Core(Matrix2<Element> input)
     {
         var result = 0L;

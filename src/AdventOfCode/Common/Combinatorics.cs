@@ -65,21 +65,21 @@ public static class Combinatorics
 
             yield return combination;
 
-            var k = count - 1;
-            while (k >= 0 && ixs[k] == values.Length - count + k)
+            var ix2 = count - 1;
+            while (ix2 >= 0 && ixs[ix2] == values.Length - count + ix2)
             {
-                k--;
+                ix2--;
             }
 
-            if (k < 0)
+            if (ix2 < 0)
             {
                 yield break;
             }
 
-            ixs[k]++;
-            for (var j = k + 1; j < count; j++)
+            ixs[ix2]++;
+            for (var ix3 = ix2 + 1; ix3 < count; ix3++)
             {
-                ixs[j] = ixs[j - 1] + 1;
+                ixs[ix3] = ixs[ix3 - 1] + 1;
             }
         }
     }
@@ -124,6 +124,27 @@ public static class Combinatorics
         }
     }
 
+    public static IEnumerable<int[]> WeakCompositions(int parts, int total)
+    {
+        if (parts == 1)
+        {
+            yield return [total];
+            yield break;
+        }
+
+        for (var ix = 0; ix <= total; ix++)
+        {
+            foreach (var rest in WeakCompositions(parts - 1, total - ix))
+            {
+                var result = new int[parts];
+                result[0] = ix;
+                Array.Copy(rest, 0, result, 1, rest.Length);
+
+                yield return result;
+            }
+        }
+    }
+
     public static IEnumerable<T[]> Permutations<T>(T[] values)
         => Permutations(values, values.Length);
 
@@ -151,22 +172,22 @@ public static class Combinatorics
             yield break;
         }
 
-        for (var i = 0; i < values.Length; i++)
+        for (var ix = 0; ix < values.Length; ix++)
         {
-            if (used[i])
+            if (used[ix])
             {
                 continue;
             }
 
-            used[i] = true;
-            current[depth] = values[i];
+            used[ix] = true;
+            current[depth] = values[ix];
 
             foreach (var perm in PermutationsRecursive(values, count, used, current, depth + 1))
             {
                 yield return perm;
             }
 
-            used[i] = false;
+            used[ix] = false;
         }
     }
 }

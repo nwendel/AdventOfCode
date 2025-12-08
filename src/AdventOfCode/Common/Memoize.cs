@@ -1,6 +1,7 @@
 namespace AdventOfCode.Common;
 
-public class Memoize<TKey, TValue> where TKey : notnull
+public class Memoize<TKey, TValue>
+    where TKey : notnull
 {
     private readonly Dictionary<TKey, TValue> _cache = [];
     private readonly Func<TKey, Memoize<TKey, TValue>, TValue> _function;
@@ -17,9 +18,8 @@ public class Memoize<TKey, TValue> where TKey : notnull
             return cached;
         }
 
-        var value = _function(key, this);
-        _cache[key] = value;
+        _cache[key] = _function(key, this);
 
-        return value;
+        return _cache[key];
     }
 }
