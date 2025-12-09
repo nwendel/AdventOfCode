@@ -21,7 +21,7 @@ public static class LongRangeExtensions
                 {
                     var last = merged[^1];
 
-                    if (range.Start <= last.End + 1)
+                    if (range.Overlaps(last) || range.Adjacent(last))
                     {
                         merged[^1] = new LongRange(last.Start, Math.Max(last.End, range.End));
                     }

@@ -33,7 +33,7 @@ public class Solver_2025_07 : Solver<ParsedInput>
                 {
                     splits += 1;
 
-                    foreach (var neighbor in next.EnumerateMoves([Direction4.West, Direction4.East]))
+                    foreach (var neighbor in next.Neighbors([Direction4.West, Direction4.East]))
                     {
                         if (input.Matrix.Contains(neighbor) && visited.Add(neighbor))
                         {

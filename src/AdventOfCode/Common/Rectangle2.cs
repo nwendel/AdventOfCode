@@ -15,6 +15,11 @@ public record Rectangle2
     {
     }
 
+    public Rectangle2(Position2 p1, Position2 p2)
+        : this(Math.Min(p1.X, p2.X), Math.Min(p1.Y, p2.Y), Math.Max(p1.X, p2.X), Math.Max(p1.Y, p2.Y))
+    {
+    }
+
     public long X1 { get; }
 
     public long Y1 { get; }
@@ -22,6 +27,19 @@ public record Rectangle2
     public long X2 { get; }
 
     public long Y2 { get; }
+
+    public long Size => Math.Abs((X2 - X1 + 1) * (Y2 - Y1 + 1));
+
+    public IEnumerable<Position2> Corners
+    {
+        get
+        {
+            yield return new Position2(X1, Y1);
+            yield return new Position2(X2, Y1);
+            yield return new Position2(X1, Y2);
+            yield return new Position2(X2, Y2);
+        }
+    }
 
     public IEnumerable<Position2> Positions
     {

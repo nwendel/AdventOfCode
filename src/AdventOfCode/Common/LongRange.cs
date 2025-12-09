@@ -21,6 +21,9 @@ public class LongRange : IEnumerable<long>
     public bool Overlaps(LongRange other)
         => Start <= other.End && End >= other.Start;
 
+    public bool Adjacent(LongRange other)
+        => End + 1 == other.Start || other.End + 1 == Start;
+
     public IEnumerator<long> GetEnumerator()
     {
         for (var ix = Start; ix <= End; ix++)
