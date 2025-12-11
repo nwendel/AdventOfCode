@@ -6,11 +6,7 @@ public class Solver_2025_09 : Solver<Position2[]>
     protected override Position2[] ParseInput(Input input)
     {
         var parsedInput = input.Lines
-            .Select(x =>
-            {
-                var coords = x.ToLongs(",");
-                return new Position2(coords[0], coords[1]);
-            })
+            .Select(x => x.ToPosition2())
             .ToArray();
 
         return parsedInput;
@@ -19,7 +15,7 @@ public class Solver_2025_09 : Solver<Position2[]>
     protected override Result SolvePart1Core(Position2[] input)
     {
         var result = Combinatorics.Combinations(input, 2)
-            .Select(x => new Rectangle2(x[0], x[1]).Size)
+            .Select(x => new Rectangle2(x[0], x[1]).Area)
             .Max();
 
         return result;
@@ -31,10 +27,10 @@ public class Solver_2025_09 : Solver<Position2[]>
 
         var rectangle = Combinatorics.Combinations(input, 2)
             .Select(x => new Rectangle2(x[0], x[1]))
-            .OrderByDescending(x => x.Size)
+            .OrderByDescending(x => x.Area)
             .Where(x => polygon.Contains(x))
             .First();
 
-        return rectangle.Size;
+        return rectangle.Area;
     }
 }

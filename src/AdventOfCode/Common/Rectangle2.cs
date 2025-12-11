@@ -28,7 +28,7 @@ public record Rectangle2
 
     public long Y2 { get; }
 
-    public long Size => Math.Abs((X2 - X1 + 1) * (Y2 - Y1 + 1));
+    public long Area => Math.Abs((X2 - X1 + 1) * (Y2 - Y1 + 1));
 
     public IEnumerable<Position2> Corners
     {

@@ -6,19 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UserSecretsId>e0852437-7fb7-4daa-8812-c5414e0c3d94</UserSecretsId>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="2024\Descriptions\**" />
-    <EmbeddedResource Remove="2024\Descriptions\**" />
-    <None Remove="2024\Descriptions\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentRegistration" Version="3.1.1" />
     <PackageReference Include="Html2Markdown" Version="7.1.1.19" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Z3.x64" Version="4.8.10" />
   </ItemGroup>
 
 </Project>

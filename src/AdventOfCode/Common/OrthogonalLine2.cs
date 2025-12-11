@@ -25,24 +25,16 @@ public record OrthogonalLine2
     {
         if (IsHorizontal)
         {
-            if (position.Y != From.Y)
-            {
-                return false;
-            }
-
             var minX = Math.Min(From.X, To.X);
             var maxX = Math.Max(From.X, To.X);
+
             return position.X >= minX && position.X <= maxX;
         }
         else if (IsVertical)
         {
-            if (position.X != From.X)
-            {
-                return false;
-            }
-
             var minY = Math.Min(From.Y, To.Y);
             var maxY = Math.Max(From.Y, To.Y);
+
             return position.Y >= minY && position.Y <= maxY;
         }
 

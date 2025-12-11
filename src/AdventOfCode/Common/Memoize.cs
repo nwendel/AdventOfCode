@@ -22,4 +22,6 @@ public class Memoize<TKey, TValue>
 
         return _cache[key];
     }
+
+    public int Count => _cache.Count;
 }

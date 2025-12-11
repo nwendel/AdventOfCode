@@ -90,6 +90,12 @@ public partial class Input : IEnumerable<InputChar>
         return matrix;
     }
 
+    public Position2 ToPosition2()
+    {
+        var parts = ToLongs(",");
+        return new Position2(parts[0], parts[1]);
+    }
+
     public IEnumerator<InputChar> GetEnumerator()
         => Text.Select(x => new InputChar(x)).GetEnumerator();
 
