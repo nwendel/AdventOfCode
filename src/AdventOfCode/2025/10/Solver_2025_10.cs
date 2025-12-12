@@ -101,26 +101,14 @@ public class Solver_2025_10 : Solver<Machine[]>
         var equations = new List<Equation>();
 
         var variables = EquationVariable.Create(machine.Buttons.Length);
-        foreach (var variable in variables)
-        {
-            var equation = new Equation(() => variable >= EquationConstant.Zero);
-            equations.Add(equation);
-        }
+
+        equations.AddRange(variables.Select(variable => new Equation(() => variable >= EquationConstant.Zero)));
 
         for (var ix = 0; ix < machine.Joltage.Length; ix++)
         {
-            var multipliers = new EquationConstant[machine.Buttons.Length];
-            for (var ix2 = 0; ix2 < machine.Buttons.Length; ix2++)
-            {
-                if (machine.Buttons[ix2].Contains(ix))
-                {
-                    multipliers[ix2] = new(1);
-                }
-                else
-                {
-                    multipliers[ix2] = new(0);
-                }
-            }
+            var multipliers = machine.Buttons
+                .Select(button => button.Contains(ix) ? new EquationConstant(1) : new EquationConstant(0))
+                .ToArray();
 
             var joltage = new EquationConstant(machine.Joltage[ix]);
 
@@ -129,6 +117,7 @@ public class Solver_2025_10 : Solver<Machine[]>
         }
 
         EquationSolver.Solve(equations, new EquationOptimizer(() => variables.Sum(), EquationOptimizationGoal.Minimize));
+
         return variables.Sum(v => v.Value);
     }
 }
