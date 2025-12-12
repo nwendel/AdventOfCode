@@ -62,6 +62,8 @@ public partial class Input : IEnumerable<InputChar>
 
     public long ToLong() => long.Parse(Text);
 
+    public int ToInt() => int.Parse(Text);
+
     public long[] ToLongs(params string[] separators)
         => Split(separators)
             .Select(x => x.ToLong())
@@ -92,7 +94,7 @@ public partial class Input : IEnumerable<InputChar>
 
     public Position2 ToPosition2()
     {
-        var parts = ToLongs(",");
+        var parts = ToLongs(",", "x");
         return new Position2(parts[0], parts[1]);
     }
 

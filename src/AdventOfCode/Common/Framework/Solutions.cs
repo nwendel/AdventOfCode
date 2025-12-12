@@ -173,6 +173,10 @@ public partial class Solutions
 
             Console.WriteLine($"Part {part}: {result}");
         }
+        catch (NoPuzzleException)
+        {
+            // No puzzle (Part 2 of last day)
+        }
         catch (NotImplementedException)
         {
             Console.WriteLine($"Part {part}: Not implemented");
@@ -199,6 +203,10 @@ public partial class Solutions
             {
                 Console.WriteLine($"Part {part}: Wrong");
             }
+        }
+        catch (NoPuzzleException)
+        {
+            // No puzzle (Part 2 of last day)
         }
         catch (NotImplementedException)
         {

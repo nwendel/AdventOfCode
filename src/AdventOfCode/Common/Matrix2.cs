@@ -42,6 +42,9 @@ public class Matrix2<T>
     public IEnumerable<T> All
         => Positions.Select(p => this[p]);
 
+    public long Count(Func<T, bool> predicate)
+        => All.Count(predicate);
+
     public IEnumerable<T[]> Columns
     {
         get

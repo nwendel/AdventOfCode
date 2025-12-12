@@ -6,6 +6,18 @@ public class EquationVariable : IEquationElement
     {
     }
 
+    public bool IsSolved { get; private set; }
+
+    public long Value
+    {
+        get => IsSolved ? field : throw new InvalidOperationException("Variable has not been solved");
+        internal set
+        {
+            field = value;
+            IsSolved = true;
+        }
+    }
+
     public static EquationVariable Create()
     {
         return new EquationVariable();

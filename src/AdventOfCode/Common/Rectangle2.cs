@@ -20,6 +20,11 @@ public record Rectangle2
     {
     }
 
+    public Rectangle2(Position2 size)
+        : this(0, 0, size.X, size.Y)
+    {
+    }
+
     public long X1 { get; }
 
     public long Y1 { get; }

@@ -5,15 +5,10 @@ namespace AdventOfCode.Common;
 
 public class EquationSolver
 {
-    public static long[] Solve(List<Equation> equations)
-    {
-        return Solve(equations, null, null);
-    }
-
-    public static long[] Solve(List<Equation> equations, Expression<Func<IEquationElement>>? optimizationExpression, EquationOptimizationGoal? goal)
+    public static void Solve(List<Equation> equations, EquationOptimizer? optimizer = null)
     {
         using var context = new Context();
-        using var optimizer = context.MkOptimize();
+        using var z3Optimizer = context.MkOptimize();
 
         var variableMap = new Dictionary<EquationVariable, IntExpr>();
         var variableList = new List<EquationVariable>();
@@ -25,58 +20,54 @@ public class EquationSolver
         }
 
         // Also collect variables from optimization expression if provided
-        if (optimizationExpression != null)
+        if (optimizer != null)
         {
-            CollectVariables(optimizationExpression.Body, variableMap, variableList, context);
+            CollectVariables(optimizer.Expression.Body, variableMap, variableList, context);
         }
 
         // Second pass: translate equations to Z3 constraints
         foreach (var equation in equations)
         {
             var constraint = TranslateExpression(equation.Expression.Body, variableMap, context);
-            optimizer.Add(constraint);
+            z3Optimizer.Add(constraint);
         }
 
         // Set optimization goal if provided
-        if (optimizationExpression != null)
+        if (optimizer != null)
         {
-            var optimizationExpr = TranslateOptimizationExpression(optimizationExpression.Body, variableMap, context);
-            if (goal == EquationOptimizationGoal.Minimize)
+            var optimizationExpr = TranslateOptimizationExpression(optimizer.Expression.Body, variableMap, context);
+            if (optimizer.Goal == EquationOptimizationGoal.Minimize)
             {
-                optimizer.MkMinimize(optimizationExpr);
+                z3Optimizer.MkMinimize(optimizationExpr);
             }
             else
             {
-                optimizer.MkMaximize(optimizationExpr);
+                z3Optimizer.MkMaximize(optimizationExpr);
             }
         }
 
         // Solve
-        var status = optimizer.Check();
+        var status = z3Optimizer.Check();
         if (status != Status.SATISFIABLE)
         {
             throw new InvalidOperationException("No solution found");
         }
 
-        // Extract results
-        var model = optimizer.Model;
-        var results = new long[variableList.Count];
+        // Extract results and set values on variables
+        var model = z3Optimizer.Model;
 
-        for (var i = 0; i < variableList.Count; i++)
+        foreach (var (variable, z3Var) in variableMap)
         {
-            var z3Var = variableMap[variableList[i]];
             var value = model.Eval(z3Var, true);
             if (value is IntNum intNum)
             {
-                results[i] = intNum.Int64;
+                variable.Value = intNum.Int64;
             }
             else
             {
                 throw new InvalidOperationException($"Variable has non-integer value");
             }
         }
-
-        return results;
     }
 
     private static void CollectVariables(

@@ -21,11 +21,11 @@ public class EquationSolverTests
             new(() => x * new EquationConstant(2) + y * new EquationConstant(1) == new EquationConstant(8))
         };
 
-        var result = EquationSolver.Solve(equations);
+        EquationSolver.Solve(equations);
 
-        Assert.Equal(3, result[0]);
-        Assert.Equal(2, result[1]);
-        Assert.Equal(5, result.Sum());
+        Assert.Equal(3, x.Value);
+        Assert.Equal(2, y.Value);
+        Assert.Equal(5, x.Value + y.Value);
     }
 
     [Fact]
@@ -57,12 +57,12 @@ public class EquationSolverTests
             new(() => b1 * new EquationConstant(1) + b2 * new EquationConstant(1) == new EquationConstant(4))
         };
 
-        var result = EquationSolver.Solve(equations);
+        EquationSolver.Solve(equations);
 
-        Assert.Equal(2, result[0]);
-        Assert.Equal(1, result[1]);
-        Assert.Equal(3, result[2]);
-        Assert.Equal(6, result.Sum());
+        Assert.Equal(2, b0.Value);
+        Assert.Equal(1, b1.Value);
+        Assert.Equal(3, b2.Value);
+        Assert.Equal(6, b0.Value + b1.Value + b2.Value);
     }
 
     [Fact]
@@ -82,11 +82,19 @@ public class EquationSolverTests
             new(() => x * new EquationConstant(1) + y * new EquationConstant(1) == new EquationConstant(10))
         };
 
-        var result = EquationSolver.Solve(equations, () => variables.Sum(), EquationOptimizationGoal.Minimize);
+        EquationSolver.Solve(equations, new EquationOptimizer(() => variables.Sum(), EquationOptimizationGoal.Minimize));
 
-        Assert.Equal(10, result.Sum());
-        Assert.True(result[0] >= 0);
-        Assert.True(result[1] >= 0);
-        Assert.Equal(10, result[0] + result[1]);
+        Assert.Equal(10, x.Value + y.Value);
+        Assert.True(x.Value >= 0);
+        Assert.True(y.Value >= 0);
+    }
+
+    [Fact]
+    public void VariableNotSolvedThrows()
+    {
+        var x = EquationVariable.Create();
+
+        Assert.False(x.IsSolved);
+        Assert.Throws<InvalidOperationException>(() => x.Value);
     }
 }

@@ -128,8 +128,8 @@ public class Solver_2025_10 : Solver<Machine[]>
             equations.Add(equation);
         }
 
-        var solution = EquationSolver.Solve(equations, () => variables.Sum(), EquationOptimizationGoal.Minimize);
-        return solution.Sum();
+        EquationSolver.Solve(equations, new EquationOptimizer(() => variables.Sum(), EquationOptimizationGoal.Minimize));
+        return variables.Sum(v => v.Value);
     }
 }
 

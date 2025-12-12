@@ -72,4 +72,10 @@ public static class Extensions
                 .Select(x => InputFormatParser.ParseLine<T>(x.Text, format))
                 .ToArray();
     }
+
+    extension(Input[] self)
+    {
+        public Input ToBlock(Range range)
+            => new(string.Join("\n", self[range].Select(x => x.Text)));
+    }
 }
