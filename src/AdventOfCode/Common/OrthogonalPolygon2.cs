@@ -11,13 +11,11 @@ public class OrthogonalPolygon2
 
     public bool Contains(Position2 position)
     {
-        // Check if point is a corner
         if (_vertices.Any(v => v.X == position.X && v.Y == position.Y))
         {
             return true;
         }
 
-        // Check if point is on an edge
         for (var ix = 0; ix < _vertices.Length; ix++)
         {
             var p1 = _vertices[ix];
@@ -57,13 +55,11 @@ public class OrthogonalPolygon2
 
     public bool Contains(Rectangle2 rectangle)
     {
-        // If any of the corners are outside, the rectangle is also outside
         if (rectangle.Corners.Any(x => !Contains(x)))
         {
             return false;
         }
 
-        // Verify no polygon edge crosses through the rectangle interior
         for (var ix = 0; ix < _vertices.Length; ix++)
         {
             var p1 = _vertices[ix];

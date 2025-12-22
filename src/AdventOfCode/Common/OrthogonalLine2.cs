@@ -49,10 +49,8 @@ public record OrthogonalLine2
             var minX = Math.Min(From.X, To.X);
             var maxX = Math.Max(From.X, To.X);
 
-            // Check if horizontal line crosses through the rectangle interior (strictly between Y bounds)
             if (y > rectangle.Y1 && y < rectangle.Y2)
             {
-                // Check if line overlaps with rectangle X range
                 if (maxX > rectangle.X1 && minX < rectangle.X2)
                 {
                     return true;
@@ -65,10 +63,8 @@ public record OrthogonalLine2
             var minY = Math.Min(From.Y, To.Y);
             var maxY = Math.Max(From.Y, To.Y);
 
-            // Check if vertical line crosses through the rectangle interior (strictly between X bounds)
             if (x > rectangle.X1 && x < rectangle.X2)
             {
-                // Check if line overlaps with rectangle Y range
                 if (maxY > rectangle.Y1 && minY < rectangle.Y2)
                 {
                     return true;
